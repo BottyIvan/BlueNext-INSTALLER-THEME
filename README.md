@@ -1,6 +1,6 @@
 # BlueNext-INSTALLER-THEME
 
-<a href="https://www.youtube.com/watch?v=DbluuvtUf8w">Demo video</a>
+<a href="https://www.youtube.com/watch?v=DbluuvtUf8w">Demo video: https://www.youtube.com/watch?v=DbluuvtUf8w</a>
 
 <h2><strong>Features:</strong></h2>
 <a>- Push notification when here new release,</a><br>
