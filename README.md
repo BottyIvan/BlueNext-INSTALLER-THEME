@@ -1,9 +1,9 @@
 # BlueNext-INSTALLER-THEME
 
 <h2><strong>Features:</strong></h2>
-<p>- Push notification when here new release,</p><br>
-<p>- Download correct theme for KitKat or Lollipop ROM Based</p><br>
-<p>- Auto install it</p><br>
+<a>- Push notification when here new release,</a><br>
+<a>- Download correct theme for KitKat or Lollipop ROM Based,</a><br>
+<a>- Auto install it.</a><br>
 
 
 <h2><strong>The Librery used:</strong></h2>
