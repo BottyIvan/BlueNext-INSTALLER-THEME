@@ -1,6 +1,5 @@
 # BlueNext-INSTALLER-THEME
 
-<a href="https://github.com/BottyIvan/Wall/tree/master/app/screen">More screen here.</a>
 <h2><strong>The Librery used:</strong></h2>
 <a href="https://github.com/koush/ion">ion</a><br>
 <a href="https://github.com/square/okhttp">okhttp</a><br>
