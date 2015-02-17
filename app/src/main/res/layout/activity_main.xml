@@ -1,0 +1,47 @@
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Header">
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="25dp"
+                android:background="@color/material_blue_gray_700"></FrameLayout>
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/content_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/Header" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/left_drawer"
+        android:layout_width="250dp"
+        android:layout_height="fill_parent"
+        android:layout_gravity="start"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"
+        android:background="@color/white"
+        android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar"/>
+
+</android.support.v4.widget.DrawerLayout>

@@ -1,0 +1,12 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="Botty.Install.Theme" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="colorAccent">@color/material_blue_gray_200</item>
+        <item name="colorPrimary">@color/material_blue_gray_500</item>
+        <item name="colorPrimaryDark">@color/material_blue_grey_800</item>
+    </style>
+
+</resources>

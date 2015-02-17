@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/frame_theme">
+
+    <ImageButton
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/download_theme"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_margin="10dp"
+        android:background="@drawable/ribbon_touch"
+        android:src="@drawable/ic_action_file_download"
+        android:scaleType="centerInside" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:id="@+id/imageView"
+        android:layout_gravity="center_horizontal|top"
+        android:src="@drawable/wallpaper1"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="205dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="For install Blue Next, click the ribbon below !"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal|top" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/info"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+</FrameLayout>

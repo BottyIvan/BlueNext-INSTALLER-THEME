@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceCategory
+    android:title="Info">
+    <PreferenceScreen
+        android:title="Version Installer: 1.5"/>
+    <PreferenceScreen
+        android:title="Version Blue Next: 0.6.4-senpai"
+        android:summary="For KitKat "/>
+    <PreferenceScreen
+        android:title="Version Blue Next: 0.0.5-Preview"
+        android:summary="For Lollipop"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="OpenStuff">
+        <PreferenceScreen
+            android:title="BlueNext Installer on GitHub">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/BottyIvan/BlueNext-INSTALLER"/>
+            </PreferenceScreen>
+        </PreferenceCategory>
+    <PreferenceCategory
+        android:title="How to">
+        <PreferenceScreen
+            android:title="Theme Downloaded"
+            android:summary="You will find your theme in .../sdcard/blue_next.."/>
+        </PreferenceCategory>
+    <PreferenceCategory
+        android:title="Contact us/me or your pets/family/spirit or anything else ?">
+        <PreferenceScreen
+            android:title="+Ivan Botty">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://plus.google.com/+IvanBotty/posts"/>
+        </PreferenceScreen>
+        <PreferenceScreen
+            android:title="Community: IvanBotty">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://plus.google.com/communities/115585040661775398640"/>
+            </PreferenceScreen>
+    </PreferenceCategory>
+</PreferenceScreen>
