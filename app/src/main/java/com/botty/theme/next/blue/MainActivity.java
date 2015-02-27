@@ -165,7 +165,7 @@ public class MainActivity extends ActionBarActivity {
                 .build();
 
         ImageView back = (ImageView) findViewById(R.id.imgBack);
-        Ion.with(back).load("https://lh4.ggpht.com/txmLSVvMLQiqUAFCeW94ZGX2ba7FgduncUCSxWUjb9fn1y3XvksQ9CE1xHjZveuSZKE=w300-rw");
+        Ion.with(back).load("https://lh4.googleusercontent.com/-L8u7iZ3cdgI/VPCGCbV2m8I/AAAAAAAABxA/nnIoWqLbt5k/s1024-no/web_hi_res_512.pngx");
     }
 
     // You need to do the Play Services APK check here too.
