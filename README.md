@@ -1,5 +1,8 @@
 # BlueNext-INSTALLER-THEME
 
+<img style="width: 80%" src="https://raw.githubusercontent.com/BottyIvan/BlueNext-INSTALLER-THEME/master/app/src/main/screen/drawer_.png">
+<img style="width: 80%" src="https://raw.githubusercontent.com/BottyIvan/BlueNext-INSTALLER-THEME/master/app/src/main/screen/ui.png">
+
 <a href="https://www.youtube.com/watch?v=DbluuvtUf8w">Demo video: https://www.youtube.com/watch?v=DbluuvtUf8w</a>
 
 <h2><strong>Features:</strong></h2>
