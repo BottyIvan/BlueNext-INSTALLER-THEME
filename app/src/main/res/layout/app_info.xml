@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="5dip" >
+   
+    <LinearLayout
+        android:id="@+id/thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="5dip"
+        android:padding="3dip" >
+
+        <CheckBox
+            android:id="@+id/checkBox1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:focusable="false"
+  			android:focusableInTouchMode="false"
+            android:layout_gravity="center" />
+  		<ImageView
+            android:id="@+id/app_image"
+            android:contentDescription="@string/app_name"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            android:src="@drawable/ic_launcher" />
+    </LinearLayout>
+    
+    <TextView
+        android:id="@+id/tvAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/thumbnail"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:paddingBottom="1dip"
+        android:text="name"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:singleLine="true"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/tvCMP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvAppName"
+        android:layout_below="@+id/tvAppName"
+        android:paddingTop="1dip"
+        android:singleLine="true"
+        android:text="name"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+</RelativeLayout>  

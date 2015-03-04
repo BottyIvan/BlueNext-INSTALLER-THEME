@@ -1,14 +1,18 @@
 package com.botty.theme.next.blue;
 
+import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -20,7 +24,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.botty.theme.next.blue.Fragment.About;
+import com.botty.theme.next.blue.Fragment.IconHelp;
 import com.botty.theme.next.blue.Fragment.ThemeInst;
+import com.botty.theme.next.blue.Fragment.kill;
 import com.botty.theme.next.blue.Util.AlertDialogManager;
 import com.botty.theme.next.blue.Util.ConnectionDetector;
 import com.google.android.gms.common.ConnectionResult;
@@ -72,7 +78,6 @@ public class MainActivity extends ActionBarActivity {
 
     private Drawer.Result drawerMaterial = null;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,13 +121,28 @@ public class MainActivity extends ActionBarActivity {
                 .permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        Fragment fragment = null;
-        Bundle args = new Bundle();
-        fragment=new ThemeInst();
-        fragment.setArguments(args);
-        FragmentManager frgManager = getFragmentManager();
-        frgManager.beginTransaction().replace(R.id.content_frame, fragment)
-                .commit();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if(!prefs.getBoolean("firstTime", false)) {
+            Fragment fragment = null;
+            Bundle args = new Bundle();
+            fragment =new kill();
+            fragment.setArguments(args);
+            FragmentManager frgManager = getFragmentManager();
+            frgManager.beginTransaction().replace(R.id.content_frame, fragment)
+                    .commit();
+            // run your one time code
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("firstTime", true);
+            editor.commit();
+        }else {
+            Fragment fragment = null;
+            Bundle args = new Bundle();
+            fragment=new ThemeInst();
+            fragment.setArguments(args);
+            FragmentManager frgManager = getFragmentManager();
+            frgManager.beginTransaction().replace(R.id.content_frame, fragment)
+                    .commit();
+        }
 
         drawerMaterial = new Drawer()
                 .withActivity(this)
@@ -131,34 +151,53 @@ public class MainActivity extends ActionBarActivity {
                 .withHeader(R.layout.my_header)
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName("Theme").withIcon(FontAwesome.Icon.faw_download),
+                        new PrimaryDrawerItem().withName("Icons").withIcon(FontAwesome.Icon.faw_circle_o),
+                        new PrimaryDrawerItem().withName("Wallpapers").withIcon(FontAwesome.Icon.faw_picture_o).withBadge("◥"),
                         new SectionDrawerItem().withName("Some stuff"),
                         new SecondaryDrawerItem().withName("Info").withIcon(FontAwesome.Icon.faw_info)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
-                        Fragment fragment = null;
-                        Bundle args = new Bundle();
-                        switch (position) {
-                            case 0:
-                                return;
-                            case 1:
-                                fragment = new ThemeInst();
-                                break;
-                            case 2:
-                                return;
-                            case 3:
-                                fragment = new About();
-                                break;
-                            default:
-                                fragment = new ThemeInst();
-                                break;
+                        if (position == 1) {
+                            Fragment fragment = null;
+                            Bundle args = new Bundle();
+                            fragment = new ThemeInst();
+                            fragment.setArguments(args);
+                            FragmentManager frgManager = getFragmentManager();
+                            frgManager.beginTransaction().replace(R.id.content_frame, fragment)
+                                    .commit();
+                        } else if (position == 2) {
+                            Fragment fragment = null;
+                            Bundle args = new Bundle();
+                            fragment = new IconHelp();
+                            fragment.setArguments(args);
+                            FragmentManager frgManager = getFragmentManager();
+                            frgManager.beginTransaction().replace(R.id.content_frame, fragment)
+                                    .commit();
+                        } else if (position == 3) {
+                            Intent i;
+                            PackageManager manager = getPackageManager();
+                            try {
+                                i = manager.getLaunchIntentForPackage("com.botty.wall");
+                                if (i == null)
+                                    throw new PackageManager.NameNotFoundException();
+                                i.addCategory(Intent.CATEGORY_LAUNCHER);
+                                startActivity(i);
+                            } catch (PackageManager.NameNotFoundException e) {
+                                Intent intent = new Intent(Intent.ACTION_VIEW);
+                                intent.setData(Uri.parse("market://details?id=com.botty.wall"));
+                                startActivity(intent);
+                            }
+                        }else if (position == 5) {
+                            Fragment fragment = null;
+                            Bundle args = new Bundle();
+                            fragment = new About();
+                            fragment.setArguments(args);
+                            FragmentManager frgManager = getFragmentManager();
+                            frgManager.beginTransaction().replace(R.id.content_frame, fragment)
+                                    .commit();
                         }
-
-                        fragment.setArguments(args);
-                        FragmentManager frgManager = getFragmentManager();
-                        frgManager.beginTransaction().replace(R.id.content_frame, fragment)
-                                .commit();
                     }
                 })
                 .withSelectedItem(0)
@@ -166,7 +205,8 @@ public class MainActivity extends ActionBarActivity {
 
         ImageView back = (ImageView) findViewById(R.id.imgBack);
         Ion.with(back).load("https://lh4.googleusercontent.com/-L8u7iZ3cdgI/VPCGCbV2m8I/AAAAAAAABxA/nnIoWqLbt5k/s1024-no/web_hi_res_512.pngx");
-    }
+
+        }
 
     // You need to do the Play Services APK check here too.
     @Override

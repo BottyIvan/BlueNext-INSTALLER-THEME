@@ -63,7 +63,7 @@ public class ThemeInst extends Fragment {
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             theme_name = "blue_next_lollipop";
-            info.setText(Html.fromHtml("<body><br><b>NOTE: <font color='red'>THIS IS A PREVIEW !!</font><br><br>Try this very very cool theme !! It's work with CM/PA/MAHDI and more !!</b><br><br><b>Sorry but you are not ready for the future, i can just say:'The future is so beautiful and mysterious that I do not even know him hahah! StayTuned !</b></body>"));
+            info.setText(Html.fromHtml("<body><br><b>NOTE: <font color='red'>THIS IS A BETA !!</font><br><br>Try this very very cool theme !! It's work with CM/PA/MAHDI and more !!</b></body>"));
         }else {
             theme_name = "blue_next_kitkat";
             info.setText(Html.fromHtml("<body><br><b>NOTE: <font color='blue'>THIS IS THE CURRENT RELEASE !!</font><br><br>Try this very very cool theme !! It's work with CM/PA/MAHDI and more !!</b></body>"));

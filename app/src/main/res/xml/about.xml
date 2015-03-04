@@ -3,12 +3,12 @@
 <PreferenceCategory
     android:title="Info">
     <PreferenceScreen
-        android:title="Version Installer: 1.5"/>
+        android:title="Version Installer: 1.6"/>
     <PreferenceScreen
         android:title="Version Blue Next: 0.6.4-senpai"
         android:summary="For KitKat "/>
     <PreferenceScreen
-        android:title="Version Blue Next: 0.0.5-Preview"
+        android:title="Version Blue Next: 0.0.6"
         android:summary="For Lollipop"/>
     </PreferenceCategory>
     <PreferenceCategory
