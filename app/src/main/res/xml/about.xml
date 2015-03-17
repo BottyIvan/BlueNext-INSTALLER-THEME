@@ -3,13 +3,16 @@
 <PreferenceCategory
     android:title="Info">
     <PreferenceScreen
-        android:title="Version Installer: 1.6"/>
+        android:title="Version Installer: 1.7"/>
     <PreferenceScreen
         android:title="Version Blue Next: 0.6.4-senpai"
         android:summary="For KitKat "/>
     <PreferenceScreen
-        android:title="Version Blue Next: 0.0.6"
+        android:title="Version Blue Next: 0.0.7"
         android:summary="For Lollipop"/>
+    <PreferenceScreen
+        android:title="Version Blue Next rev_Dark: 0.0.7"
+        android:summary="For Lollipop,same theme with setting app themed in dark"/>
     </PreferenceCategory>
     <PreferenceCategory
         android:title="OpenStuff">
