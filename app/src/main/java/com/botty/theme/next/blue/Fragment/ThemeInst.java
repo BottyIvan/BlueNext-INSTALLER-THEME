@@ -1,6 +1,5 @@
 package com.botty.theme.next.blue.Fragment;
 
-
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.ProgressDialog;
@@ -79,10 +78,16 @@ public class ThemeInst extends Fragment {
                     AlertDialog.Builder miaAlert = new AlertDialog.Builder(getActivity());
                     miaAlert.setTitle("Options for Blue Next on Lollipop");
                     miaAlert.setMessage("Do you want try the dark version, with the setting app themed in black ?");
-                    miaAlert.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                    miaAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             theme_name = "blue_next_dark_lollipop";
+                            DownloadTheme();
+                        }
+                    });
+                    miaAlert.setNegativeButton("NOPE !", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
                             DownloadTheme();
                         }
                     });
