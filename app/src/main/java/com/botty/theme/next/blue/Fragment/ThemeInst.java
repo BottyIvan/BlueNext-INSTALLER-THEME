@@ -1,9 +1,11 @@
 package com.botty.theme.next.blue.Fragment;
 
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -73,43 +75,62 @@ public class ThemeInst extends Fragment {
         mInstaTheme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (downloading != null && !downloading.isCancelled()) {
-                    resetDownload();
-                    return;
-                }
-                downloading = Ion.with(getActivity())
-                            .load("http://gnexushd.altervista.org/dl_app/" + theme_name + ".apk")
-                            // have a ProgressBar get updated automatically with the percent
-                            // and a ProgressDialog
-                            .progressDialog(Progress())
-                            .progress(new ProgressCallback() {
-                                @Override
-                                public void onProgress(long downloaded, long total) {
-                                    System.out.println("" + downloaded + " / " + total);
-                                }
-                            })
-                            .write(new File("/sdcard/" + theme_name + ".apk"))
-                            .setCallback(new FutureCallback<File>() {
-                                @Override
-                                public void onCompleted(Exception e, File file) {
-                                    // download done...
-                                    // do stuff with the File or error
-                                    progressDialog.dismiss();
-                                    Toast.makeText(getActivity(),"Downloaded !!",Toast.LENGTH_SHORT).show();
-                                    downloaded = true;
-                                    if (downloaded == true){
-                                        File apkFile = new File("/sdcard/" + theme_name + ".apk");
-                                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                                        intent.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
-                                        startActivity(intent);
-                                    }else {
-                                        Toast.makeText(getActivity(),"error on install !!",Toast.LENGTH_SHORT).show();
-                                    }
-                                }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    AlertDialog.Builder miaAlert = new AlertDialog.Builder(getActivity());
+                    miaAlert.setTitle("Options for Blue Next on Lollipop");
+                    miaAlert.setMessage("Do you want try the dark version, with the setting app themed in black ?");
+                    miaAlert.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            theme_name = "blue_next_dark_lollipop";
+                            DownloadTheme();
+                        }
                     });
+                    AlertDialog alert = miaAlert.create();
+                    alert.show();
+                } else {
+                    DownloadTheme();
+                }
             }
         });
         return view;
+    }
+
+    public void DownloadTheme(){
+        if (downloading != null && !downloading.isCancelled()) {
+            resetDownload();
+            return;
+        }
+        downloading = Ion.with(getActivity())
+                .load("http://gnexushd.altervista.org/dl_app/" + theme_name + ".apk")
+                        // have a ProgressBar get updated automatically with the percent
+                        // and a ProgressDialog
+                .progressDialog(Progress())
+                .progress(new ProgressCallback() {
+                    @Override
+                    public void onProgress(long downloaded, long total) {
+                        System.out.println("" + downloaded + " / " + total);
+                    }
+                })
+                .write(new File("/sdcard/" + theme_name + ".apk"))
+                .setCallback(new FutureCallback<File>() {
+                    @Override
+                    public void onCompleted(Exception e, File file) {
+                        // download done...
+                        // do stuff with the File or error
+                        progressDialog.dismiss();
+                        Toast.makeText(getActivity(), "Downloaded !!", Toast.LENGTH_SHORT).show();
+                        downloaded = true;
+                        if (downloaded == true) {
+                            File apkFile = new File("/sdcard/" + theme_name + ".apk");
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            intent.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(getActivity(), "error on install !!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     public ProgressDialog Progress(){
