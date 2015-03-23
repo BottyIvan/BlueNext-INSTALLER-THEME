@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 <PreferenceCategory
-    android:title="Info">
-    <PreferenceScreen
-        android:title="Version Installer: 1.7"/>
-    <PreferenceScreen
-        android:title="Version Blue Next: 0.6.4-senpai"
-        android:summary="For KitKat "/>
-    <PreferenceScreen
-        android:title="Version Blue Next: 0.0.7"
-        android:summary="For Lollipop"/>
-    <PreferenceScreen
-        android:title="Version Blue Next rev_Dark: 0.0.7"
-        android:summary="For Lollipop,same theme with setting app themed in dark"/>
+    android:title="@string/theme_option">
+    <SwitchPreference
+        android:title="@string/use_always_rev_dark"/>
     </PreferenceCategory>
-    <PreferenceCategory
-        android:title="OpenStuff">
+<PreferenceCategory
+    android:title="@string/info_category">
+    <PreferenceScreen
+        android:title="@string/info_for_installer"/>
+    <PreferenceScreen
+        android:title="@string/info_for_bleu_next"
+        android:summary="@string/summery_for_blue_next"/>
+    <PreferenceScreen
+        android:title="@string/info_for_blue_next_lollipop"
+        android:summary="@string/summery_blue_next_lollipop"/>
+    <PreferenceScreen
+        android:title="@string/info_rev_dark_lollipop"
+        android:summary="@string/summery_rev_dark_lollipop"/>
+    </PreferenceCategory>
+<PreferenceCategory
+        android:title="@string/open_stuff_category">
         <PreferenceScreen
-            android:title="BlueNext Installer on GitHub">
+            android:title="@string/installer_on_github">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="https://github.com/BottyIvan/BlueNext-INSTALLER"/>
             </PreferenceScreen>
         </PreferenceCategory>
-    <PreferenceCategory
-        android:title="How to">
-        <PreferenceScreen
-            android:title="Theme Downloaded"
-            android:summary="You will find your theme in .../sdcard/blue_next.."/>
-        </PreferenceCategory>
-    <PreferenceCategory
-        android:title="Contact us/me or your pets/family/spirit or anything else ?">
+<PreferenceCategory
+        android:title="@string/contact_category">
         <PreferenceScreen
             android:title="+Ivan Botty">
             <intent

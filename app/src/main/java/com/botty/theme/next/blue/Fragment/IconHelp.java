@@ -214,7 +214,7 @@ public class IconHelp extends Fragment {
 
                 mytask.execute(AppList);
                 StringBuilder sb = new StringBuilder();
-                sb.append("Hi dev, these apps are unthemed on my phone :\n\n");
+                sb.append(getActivity().getString(R.string.request_to_dev_for_unthemed_icon));
                 for(int i=0;i<AppList.size();i++)
                 {
                     AppInfo app = AppList.get(i);
@@ -231,13 +231,13 @@ public class IconHelp extends Fragment {
                 i.setType("text/plain");
                 String[] recipients = new String[]{"droidbotty@gmail.com"};
                 i.putExtra(Intent.EXTRA_EMAIL, recipients);
-                i.putExtra(Intent.EXTRA_SUBJECT, "Request for BlueNext");
+                i.putExtra(Intent.EXTRA_SUBJECT, getActivity().getString(R.string.reques_for_theme_name));
                 i.putExtra(Intent.EXTRA_TEXT   , sb.toString());
                 try
                 {
-                    startActivity(Intent.createChooser(i, "Send mail..."));
+                    startActivity(Intent.createChooser(i, getActivity().getString(R.string.send_mail)));
                 } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(getActivity(), "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getActivity().getString(R.string.no_mail_client), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -262,11 +262,11 @@ public class IconHelp extends Fragment {
 
             //create the notification
             int icon = R.drawable.icon;
-            CharSequence tickerText = "Activities Uploaded"; //Initial text that appears in the status bar
+            CharSequence tickerText = mContext.getString(R.string.activity_uploaded_notify); //Initial text that appears in the status bar
             long when = System.currentTimeMillis();
             mNotification = new Notification(icon, tickerText, when);
-            mContentTitle = "Activities uploaded"; //Full title of the notification in the pull down
-            CharSequence contentText = "Your selected apps activity sent to our server :)"; //Text of the notification in the pull down
+            mContentTitle = getActivity().getString(R.string.activity_uploaded_notify); //Full title of the notification in the pull down
+            CharSequence contentText = mContext.getString(R.string.message_app_uploaded_notify); //Text of the notification in the pull down
             //you have to set a PendingIntent on a notification to tell the system what you want it to do when the notification is selected
             //I don't want to use this here so I'm just creating a blank one
             Intent notificationIntent = new Intent();

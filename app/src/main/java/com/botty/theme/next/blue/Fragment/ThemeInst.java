@@ -76,8 +76,8 @@ public class ThemeInst extends Fragment {
             public void onClick(View v) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     AlertDialog.Builder miaAlert = new AlertDialog.Builder(getActivity());
-                    miaAlert.setTitle("Options for Blue Next on Lollipop");
-                    miaAlert.setMessage("Do you want try the dark version, with the setting app themed in black ?");
+                    miaAlert.setTitle(getActivity().getString(R.string.question_title_option_rev_dark));
+                    miaAlert.setMessage(getActivity().getString(R.string.question_message_rev_dark));
                     miaAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -85,7 +85,7 @@ public class ThemeInst extends Fragment {
                             DownloadTheme();
                         }
                     });
-                    miaAlert.setNegativeButton("NOPE !", new DialogInterface.OnClickListener() {
+                    miaAlert.setNegativeButton(getActivity().getString(R.string.nope_respons), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             DownloadTheme();
@@ -124,7 +124,7 @@ public class ThemeInst extends Fragment {
                         // download done...
                         // do stuff with the File or error
                         progressDialog.dismiss();
-                        Toast.makeText(getActivity(), "Downloaded !!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getActivity().getString(R.string.downloaded), Toast.LENGTH_SHORT).show();
                         downloaded = true;
                         if (downloaded == true) {
                             File apkFile = new File("/sdcard/" + theme_name + ".apk");
@@ -132,7 +132,7 @@ public class ThemeInst extends Fragment {
                             intent.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
                             startActivity(intent);
                         } else {
-                            Toast.makeText(getActivity(), "error on install !!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), getActivity().getString(R.string.error_on_install), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -141,7 +141,7 @@ public class ThemeInst extends Fragment {
     public ProgressDialog Progress(){
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        progressDialog.setMessage("Downloading ...");
+        progressDialog.setMessage(getActivity().getString(R.string.downloading));
         progressDialog.setCancelable(false);
         progressDialog.show();
         return progressDialog;

@@ -8,4 +8,41 @@
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
 
+    <!-- About fragment -->
+    <string name="theme_option">Theme Option</string>
+    <string name="use_always_rev_dark">Use always rev_dark</string>
+    <string name="info_category">Info</string>
+    <string name="info_for_installer">Version Installer: 1.7.1</string>
+    <string name="info_for_bleu_next">Version Blue Next: 0.6.4-senpai</string>
+    <string name="summery_for_blue_next">For KitKat</string>
+    <string name="info_for_blue_next_lollipop">Version Blue Next: 0.0.7</string>
+    <string name="summery_blue_next_lollipop">For Lollipop</string>
+    <string name="info_rev_dark_lollipop">Version Blue Next rev_Dark: 0.0.7</string>
+    <string name="summery_rev_dark_lollipop">For Lollipop,the same thme with setting app themed dark</string>
+    <string name="open_stuff_category">OpenStuff</string>
+    <string name="installer_on_github">BlueNext Installer on GitHub</string>
+    <string name="contact_category">Contact us/me or your pets/family/spirit or anything else ?</string>
+
+    <!-- ThemeInst fragment -->
+    <string name="question_title_option_rev_dark">Options for Blue Next on Lollipop</string>
+    <string name="question_message_rev_dark">Do you want try the dark version, with the setting app themed in black ?</string>
+    <string name="downloaded">Downloaded !!</string>
+    <string name="error_on_install">error on install !!</string>
+    <string name="downloading">Downloading ...</string>
+    <string name="nope_respons">NOPE !</string>
+
+    <!-- IconHelp fagment -->
+    <string name="request_to_dev_for_unthemed_icon">Hi dev, these apps are unthemed on my phone :\n\n</string>
+    <string name="reques_for_theme_name">Request for BlueNext</string>
+    <string name="send_mail">Send mail...</string>
+    <string name="no_mail_client">There are no email clients installed.</string>
+    <string name="activity_uploaded_notify">Activities Uploaded</string>
+    <string name="message_app_uploaded_notify">Your selected apps activity sent to our server :)</string>
+    <!-- drawer item -->
+    <string name="theme_item_drawer">Theme</string>
+    <string name="icons_item_drawer">Icons</string>
+    <string name="wallpapers_item_drawer">Wallpapers</string>
+    <string name="some_stuff_item_drawer">Some stuff</string>
+    <string name="info_item_drawer">Info</string>
+
 </resources>

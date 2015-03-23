@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Blue Next Installer</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="navigation_drawer_open">Wall</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+    <!-- About fragment -->
+    <string name="theme_option">Opzioni Tema</string>
+    <string name="use_always_rev_dark">Usa sempre rev_dark</string>
+    <string name="info_category">Informazioni</string>
+    <string name="info_for_installer">Versione Installer: 1.7.1</string>
+    <string name="info_for_bleu_next">Versione Blue Next: 0.6.4-senpai</string>
+    <string name="summery_for_blue_next">Per KitKat</string>
+    <string name="info_for_blue_next_lollipop">Versione Blue Next: 0.0.7</string>
+    <string name="summery_blue_next_lollipop">per Lollipop</string>
+    <string name="info_rev_dark_lollipop">Versione Blue Next rev_Dark: 0.0.7</string>
+    <string name="summery_rev_dark_lollipop">Per Lollipop,lo stesso tema con le impostazioni temizzate scure</string>
+    <string name="open_stuff_category">CoseLibere</string>
+    <string name="installer_on_github">BlueNext Installer su GitHub</string>
+    <string name="contact_category">Contata noi/me o i tuoi animali/familiari/spiriti o qualsiasi altro ?</string>
+
+    <!-- ThemeInst fragment -->
+    <string name="question_title_option_rev_dark">Opzione per Blue Next su Lollipop</string>
+    <string name="question_message_rev_dark">Voi prvare la versione dark, con le impostazioni temizzate in dark ?</string>
+    <string name="downloaded">Scaricato !!</string>
+    <string name="error_on_install">errore durante l installazione !!</string>
+    <string name="downloading">Scaricamento ...</string>
+    <string name="nope_respons">NO !</string>
+
+    <!-- IconHelp fagment -->
+    <string name="request_to_dev_for_unthemed_icon">Ciao sviuppatore, queste icone non sono temizzate :\n\n</string>
+    <string name="reques_for_theme_name">Richiesta per BlueNext</string>
+    <string name="send_mail">Invio mail...</string>
+    <string name="no_mail_client">Nessun client mail installto.</string>
+    <string name="activity_uploaded_notify">Activities Caricate</string>
+    <string name="message_app_uploaded_notify">Le tue activities selezionate sono state inviate al nostro server :)</string>
+    <!-- drawer item -->
+    <string name="theme_item_drawer">Tema</string>
+    <string name="icons_item_drawer">Icone</string>
+    <string name="wallpapers_item_drawer">Sfondi</string>
+    <string name="some_stuff_item_drawer">Delle cose</string>
+    <string name="info_item_drawer">Informazioni</string>
+</resources>
