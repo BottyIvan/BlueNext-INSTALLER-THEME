@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Blue Next Installer</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="navigation_drawer_open">Wall</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+    <!-- About fragment -->
+    <string name="theme_option">Opciones de Tema</string>
+    <string name="use_always_rev_dark">Usar siempre rev_dark</string>
+    <string name="info_category">Información</string>
+    <string name="summery_for_blue_next">Para KitKat</string>
+    <string name="summery_blue_next_lollipop">Para Lollipop</string>
+    <string name="summery_rev_dark_lollipop">Para Lollipop,el mismo tema con los ajustes oscuros</string>
+    <string name="open_stuff_category">CosasLibre</string>
+    <string name="installer_on_github">BlueNext Installer su GitHub</string>
+    <string name="contact_category">¿ Contado nosotros/yo o sus mascotas/familia/espíritus o cualquier otro ?</string>
+
+    <!-- ThemeInst fragment -->
+    <string name="question_title_option_rev_dark">Opción para Blue Next su Lollipop</string>
+    <string name="question_message_rev_dark">¿ Intenta la versión oscura, con los ajustes en la oscuridad ?</string>
+    <string name="downloaded">¡¡ Descargado !!</string>
+    <string name="error_on_install">¡¡ error durante la instalación !!</string>
+    <string name="downloading">Descarga de ...</string>
+    <string name="nope_respons">¡ NO !</string>
+
+    <!-- IconHelp fagment -->
+    <string name="send_mail">Envío mail...</string>
+    <string name="no_mail_client">Ningún cliente de correo electrónico instalado.</string>
+    <string name="activity_uploaded_notify">Activities Cargado</string>
+    <string name="message_app_uploaded_notify">Sus actividades seleccionadas fueron enviados a nuestro servidor :)</string>
+
+    <!-- drawer item -->
+    <string name="theme_item_drawer">Tema</string>
+    <string name="icons_item_drawer">Iconos</string>
+    <string name="wallpapers_item_drawer">Fondos de pantalla</string>
+    <string name="some_stuff_item_drawer">Cosas</string>
+    <string name="info_item_drawer">Información</string>
+
+    <!-- Kilfragment -->
+    <string name="change_your_rate">Cambie su tasa o ..</string>
+    <string name="install_theme_frag_kill_you">Instalar tema</string>
+    <string name="rate_it_frag_kill_you">Califícala</string>
+</resources>

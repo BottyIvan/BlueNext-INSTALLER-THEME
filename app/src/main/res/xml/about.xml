@@ -3,7 +3,9 @@
 <PreferenceCategory
     android:title="@string/theme_option">
     <SwitchPreference
-        android:title="@string/use_always_rev_dark"/>
+        android:title="@string/use_always_rev_dark"
+        android:key="true_gothic"
+        android:defaultValue="false"/>
     </PreferenceCategory>
 <PreferenceCategory
     android:title="@string/info_category">

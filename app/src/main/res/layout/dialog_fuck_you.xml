@@ -7,7 +7,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Change your rate or .."
+        android:text="@string/change_your_rate"
         android:id="@+id/textView3"
         android:layout_margin="5dp" />
 
@@ -27,7 +27,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Install Theme"
+            android:text="@string/install_theme_frag_kill_you"
             android:id="@+id/instTheme_btn"
             android:layout_gravity="center"
             android:gravity="center" />
@@ -35,7 +35,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rate It"
+            android:text="@string/rate_it_frag_kill_you"
             android:id="@+id/rate_it"
             android:layout_gravity="center"
             android:gravity="center" />

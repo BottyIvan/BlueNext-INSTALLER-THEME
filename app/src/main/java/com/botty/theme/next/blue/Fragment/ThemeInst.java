@@ -2,14 +2,17 @@ package com.botty.theme.next.blue.Fragment;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -49,6 +52,9 @@ public class ThemeInst extends Fragment {
     Future<File> downloading;
     boolean downloaded = false;
 
+    SharedPreferences settings;
+    SharedPreferences prefs;
+
     public ThemeInst() {
 
     }
@@ -71,30 +77,29 @@ public class ThemeInst extends Fragment {
         }
 
         mInstaTheme = (ImageButton)view.findViewById(R.id.download_theme);
+
+        PreferenceManager.setDefaultValues(getActivity(), R.xml.about, true);
+        settings = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
+
         mInstaTheme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    AlertDialog.Builder miaAlert = new AlertDialog.Builder(getActivity());
-                    miaAlert.setTitle(getActivity().getString(R.string.question_title_option_rev_dark));
-                    miaAlert.setMessage(getActivity().getString(R.string.question_message_rev_dark));
-                    miaAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            theme_name = "blue_next_dark_lollipop";
-                            DownloadTheme();
-                        }
-                    });
-                    miaAlert.setNegativeButton(getActivity().getString(R.string.nope_respons), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            DownloadTheme();
-                        }
-                    });
-                    AlertDialog alert = miaAlert.create();
-                    alert.show();
-                } else {
-                    DownloadTheme();
+                prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                if(!prefs.getBoolean("fistInstall", false)) {
+                    DialogQuestion();
+                    // run your one time code
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putBoolean("fistInstall", true);
+                    editor.commit();
+                }else {
+                    if (settings.getBoolean("true_gothic", false)) {
+                        theme_name = "blue_next_dark_lollipop";
+                        DownloadTheme();
+                    }else {
+                        theme_name = "blue_next_lollipop";
+                        DownloadTheme();
+                    }
                 }
             }
         });
@@ -151,5 +156,36 @@ public class ThemeInst extends Fragment {
         // cancel any pending download
         downloading.cancel();
         downloading = null;
+    }
+
+    public void DialogQuestion(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AlertDialog.Builder miaAlert = new AlertDialog.Builder(getActivity());
+            miaAlert.setTitle(getActivity().getString(R.string.question_title_option_rev_dark));
+            miaAlert.setMessage(getActivity().getString(R.string.question_message_rev_dark));
+            miaAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    theme_name = "blue_next_dark_lollipop";
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putBoolean("true_gothic", true);
+                    editor.commit();
+                    DownloadTheme();
+                }
+            });
+            miaAlert.setNegativeButton(getActivity().getString(R.string.nope_respons), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putBoolean("true_gothic", false);
+                    editor.commit();
+                    DownloadTheme();
+                }
+            });
+            AlertDialog alert = miaAlert.create();
+            alert.show();
+        } else {
+            DownloadTheme();
+        }
     }
 }
