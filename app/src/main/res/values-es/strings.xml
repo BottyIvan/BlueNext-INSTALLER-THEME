@@ -44,4 +44,9 @@
     <string name="change_your_rate">Cambie su tasa o ..</string>
     <string name="install_theme_frag_kill_you">Instalar tema</string>
     <string name="rate_it_frag_kill_you">Califícala</string>
+    <string name="fragment_kill_not_support_icons_and_req">Iconos y Solicitud</string>
+
+    <!-- Fragment_swipe -->
+    <string name="All_icons_tab">Todos los iconos</string>
+    <string name="request_icons_tab">Solicitud</string>
 </resources>

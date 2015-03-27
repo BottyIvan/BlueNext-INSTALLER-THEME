@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+   <string-array name="icon_pack" translatable="true">
+      <!-- Blue Cyngn Next icons Basic AOSP App-->
+       <item>browser</item>
+       <item>calculator</item>
+       <item>phone</item>
+       <item>torch</item>
+       <item>settings</item>
+       <item>camera</item>
+       <item>sms</item>
+       <item>contacts</item>
+       <item>mail_aosp</item>
+       <item>gallery_aosp</item>
+
+       <!-- Blue Cyngn Next icons Google App -->
+       <item>hangouts</item>
+       <item>googleplus</item>
+       <item>chrome</item>
+       <item>googleplay</item>
+       <item>youtube</item>
+       <item>googleplaymusic</item>
+       <item>photogoogleplus</item>
+       <item>googlecamera</item>
+       <item>googleplaymovies</item>
+       <item>playgame</item>
+       <item>chrome</item>
+       <item>gmail</item>
+       <item>calendar_google</item>
+       <item>googel_search</item>
+
+       <!-- App of Cyngn Team and Cyanogen Inc -->
+       <item>allcast</item>
+       <item>gallerynext</item>
+
+       <!-- App of CyanogenMod -->
+       <item>audiofx</item>
+
+       <!-- App of Facebook -->
+       <item>facebook</item>
+       <item>whatapp</item>
+
+       <!-- App of Twitter -->
+       <item>twitter</item>
+
+       <!-- App of Amazon -->
+       <item>amazonshop</item>
+       <item>kindle</item>
+
+       <!-- App of Adobe -->
+       <item>adobereader</item>
+
+       <!-- Other Launcher -->
+       <item>adw_normal</item>
+       <item>adw_ex</item>
+
+       <!-- Other app -->
+       <item>spotify</item>
+   </string-array>
+
+</resources>

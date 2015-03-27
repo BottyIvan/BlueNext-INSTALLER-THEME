@@ -4,7 +4,7 @@ package com.botty.theme.next.blue.Fragment;
  * Created by ivanbotty on 29/05/14.
  */
 import android.annotation.SuppressLint;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -34,6 +34,7 @@ import android.widget.Toast;
 
 import com.botty.theme.next.blue.Util.AppInfo;
 import com.botty.theme.next.blue.R;
+import com.melnykov.fab.FloatingActionButton;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -52,10 +53,7 @@ public class IconHelp extends Fragment {
     static String icon_pack="";
     View view;
     private ProgressDialog progressDialog;
-
-    public IconHelp() {
-
-    }
+    FloatingActionButton fab;
 
     @SuppressLint("NewApi")
     @Override
@@ -129,6 +127,8 @@ public class IconHelp extends Fragment {
         //create an ArrayAdaptar from the String Array
         dataAdapter = new MyCustomAdapter(getActivity(),R.layout.app_info, appList);
         ListView listView = (ListView) view.findViewById(R.id.listApps);
+        fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.attachToListView(listView);
         // Assign adapter to ListView
         listView.setAdapter(dataAdapter);
         listView.setOnItemClickListener(new OnItemClickListener() {
@@ -204,8 +204,7 @@ public class IconHelp extends Fragment {
 
     private void SendInfo() {
 
-        Button myButton = (Button) view.findViewById(R.id.findSelected);
-        myButton.setOnClickListener(new OnClickListener() {
+        fab.setOnClickListener(new OnClickListener() {
             @SuppressWarnings("unchecked")
             @Override
             public void onClick(View v) {

@@ -55,4 +55,12 @@
     <string name="install_theme_frag_kill_you">Install Theme</string>
     <string name="rate_it_frag_kill_you">Rate It</string>
 
+    <!-- Kill_notSupport -->
+    <string name="fragment_kill_not_support_icons_and_req">Icons and Request</string>
+
+    <!-- Fragment_swipe -->
+    <string name="All_icons_tab">All Icons</string>
+    <string name="request_icons_tab">Request</string>
+    <string name="title_activity_about">About</string>
+
 </resources>

@@ -44,4 +44,9 @@
     <string name="change_your_rate">Cambia il tuo voto o ..</string>
     <string name="install_theme_frag_kill_you">Installa il tema</string>
     <string name="rate_it_frag_kill_you">Vota il tema</string>
+    <string name="fragment_kill_not_support_icons_and_req">Icone e richieste</string>
+
+    <!-- Fragment_swipe -->
+    <string name="All_icons_tab">Tutte le icons</string>
+    <string name="request_icons_tab">Richieste</string>
 </resources>

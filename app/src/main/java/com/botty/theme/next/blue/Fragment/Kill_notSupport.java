@@ -1,7 +1,5 @@
 package com.botty.theme.next.blue.Fragment;
 
-
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,13 +14,13 @@ import com.botty.theme.next.blue.R;
 import com.koushikdutta.ion.Ion;
 
 /**
- * Created by BottyIvan on 04/03/15.
+ * Created by BottyIvan on 27/03/15.
  */
-public class kill extends Fragment {
+public class Kill_notSupport extends Fragment {
 
     public String kill = "https://lh6.googleusercontent.com/-lfM1Tf7LeEs/VPZNVfVVx0I/AAAAAAAAg3w/RZu1Tq6YT0U/w1250-h832-no/803f1a0db2a57b833a0049b53a886ec95b046e5c8eafe715c36f0c32183d9f65.jpg";
 
-    public kill() {
+    public Kill_notSupport() {
 
     }
 
@@ -43,7 +41,7 @@ public class kill extends Fragment {
             public void onClick(View v) {
                 android.support.v4.app.FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                ThemeInst fragment = new ThemeInst();
+                Fragment_Swiper fragment = new Fragment_Swiper();
                 fragmentTransaction.replace(R.id.content_frame, fragment);
                 fragmentTransaction.commit();
             }

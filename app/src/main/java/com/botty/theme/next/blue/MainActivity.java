@@ -1,11 +1,9 @@
 package com.botty.theme.next.blue;
 
-import android.app.Dialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -23,8 +21,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.botty.theme.next.blue.Fragment.About;
-import com.botty.theme.next.blue.Fragment.IconHelp;
+import com.botty.theme.next.blue.Activities.Activity_About;
+import com.botty.theme.next.blue.Fragment.Fragment_Swiper;
+import com.botty.theme.next.blue.Fragment.Kill_notSupport;
 import com.botty.theme.next.blue.Fragment.ThemeInst;
 import com.botty.theme.next.blue.Fragment.kill;
 import com.botty.theme.next.blue.Util.AlertDialogManager;
@@ -41,6 +40,7 @@ import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
@@ -67,6 +67,7 @@ public class MainActivity extends ActionBarActivity {
      */
     static final String TAG = "GCMDemo";
 
+    static public String PackageThemeCM = "org.cyanogenmod.themes.provider";
     TextView mDisplay;
     GoogleCloudMessaging gcm;
     AtomicInteger msgId = new AtomicInteger();
@@ -110,6 +111,18 @@ public class MainActivity extends ActionBarActivity {
 
         setContentView(R.layout.activity_main);
 
+        if(isPackageExisted(PackageThemeCM)){
+            ThemeSupported();
+        }else {
+            ThemeNotSupported();
+        }
+
+        ImageView back = (ImageView) findViewById(R.id.imgBack);
+        Ion.with(back).load("https://lh4.googleusercontent.com/-L8u7iZ3cdgI/VPCGCbV2m8I/AAAAAAAABxA/nnIoWqLbt5k/s1024-no/web_hi_res_512.pngx");
+
+        }
+
+    public void ThemeSupported(){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -123,25 +136,21 @@ public class MainActivity extends ActionBarActivity {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if(!prefs.getBoolean("firstTime", false)) {
-            Fragment fragment = null;
-            Bundle args = new Bundle();
-            fragment =new kill();
-            fragment.setArguments(args);
-            FragmentManager frgManager = getFragmentManager();
-            frgManager.beginTransaction().replace(R.id.content_frame, fragment)
-                    .commit();
+            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            kill fragment = new kill();
+            fragmentTransaction.replace(R.id.content_frame, fragment);
+            fragmentTransaction.commit();
             // run your one time code
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean("firstTime", true);
             editor.commit();
         }else {
-            Fragment fragment = null;
-            Bundle args = new Bundle();
-            fragment=new ThemeInst();
-            fragment.setArguments(args);
-            FragmentManager frgManager = getFragmentManager();
-            frgManager.beginTransaction().replace(R.id.content_frame, fragment)
-                    .commit();
+            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            ThemeInst fragment = new ThemeInst();
+            fragmentTransaction.replace(R.id.content_frame, fragment);
+            fragmentTransaction.commit();
         }
 
         drawerMaterial = new Drawer()
@@ -160,21 +169,17 @@ public class MainActivity extends ActionBarActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
                         if (position == 1) {
-                            Fragment fragment = null;
-                            Bundle args = new Bundle();
-                            fragment = new ThemeInst();
-                            fragment.setArguments(args);
-                            FragmentManager frgManager = getFragmentManager();
-                            frgManager.beginTransaction().replace(R.id.content_frame, fragment)
-                                    .commit();
+                            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            ThemeInst fragment = new ThemeInst();
+                            fragmentTransaction.replace(R.id.content_frame, fragment);
+                            fragmentTransaction.commit();
                         } else if (position == 2) {
-                            Fragment fragment = null;
-                            Bundle args = new Bundle();
-                            fragment = new IconHelp();
-                            fragment.setArguments(args);
-                            FragmentManager frgManager = getFragmentManager();
-                            frgManager.beginTransaction().replace(R.id.content_frame, fragment)
-                                    .commit();
+                            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            Fragment_Swiper fragment = new Fragment_Swiper();
+                            fragmentTransaction.replace(R.id.content_frame, fragment);
+                            fragmentTransaction.commit();
                         } else if (position == 3) {
                             Intent i;
                             PackageManager manager = getPackageManager();
@@ -190,23 +195,100 @@ public class MainActivity extends ActionBarActivity {
                                 startActivity(intent);
                             }
                         }else if (position == 5) {
-                            Fragment fragment = null;
-                            Bundle args = new Bundle();
-                            fragment = new About();
-                            fragment.setArguments(args);
-                            FragmentManager frgManager = getFragmentManager();
-                            frgManager.beginTransaction().replace(R.id.content_frame, fragment)
-                                    .commit();
+                            Intent intent = new Intent(getApplicationContext(), Activity_About.class);
+                            startActivity(intent);
                         }
                     }
                 })
                 .withSelectedItem(0)
                 .build();
+    }
 
-        ImageView back = (ImageView) findViewById(R.id.imgBack);
-        Ion.with(back).load("https://lh4.googleusercontent.com/-L8u7iZ3cdgI/VPCGCbV2m8I/AAAAAAAABxA/nnIoWqLbt5k/s1024-no/web_hi_res_512.pngx");
-
+    public void ThemeNotSupported(){
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+        frameLayout = (FrameLayout) findViewById(R.id.content_frame);
+
+        final StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                .permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if(!prefs.getBoolean("firstTime", false)) {
+            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            Kill_notSupport fragment = new Kill_notSupport();
+            fragmentTransaction.replace(R.id.content_frame, fragment);
+            fragmentTransaction.commit();
+            // run your one time code
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("firstTime", true);
+            editor.commit();
+        }else {
+            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            Fragment_Swiper fragment = new Fragment_Swiper();
+            fragmentTransaction.replace(R.id.content_frame, fragment);
+            fragmentTransaction.commit();
+        }
+
+        drawerMaterial = new Drawer()
+                .withActivity(this)
+                .withToolbar(toolbar)
+                .withActionBarDrawerToggle(true)
+                .withHeader(R.layout.my_header)
+                .addDrawerItems(
+                        new PrimaryDrawerItem().withName(getString(R.string.icons_item_drawer)).withIcon(FontAwesome.Icon.faw_circle_o),
+                        new PrimaryDrawerItem().withName(getString(R.string.wallpapers_item_drawer)).withIcon(FontAwesome.Icon.faw_picture_o).withBadge("◥"),
+                        new SectionDrawerItem().withName(getString(R.string.some_stuff_item_drawer)),
+                        new SecondaryDrawerItem().withName(getString(R.string.info_item_drawer)).withIcon(FontAwesome.Icon.faw_info)
+                )
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
+                        if (position == 1) {
+                            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            Fragment_Swiper fragment = new Fragment_Swiper();
+                            fragmentTransaction.replace(R.id.content_frame, fragment);
+                            fragmentTransaction.commit();
+                        } else if (position == 3) {
+                            Intent i;
+                            PackageManager manager = getPackageManager();
+                            try {
+                                i = manager.getLaunchIntentForPackage("com.botty.wall");
+                                if (i == null)
+                                    throw new PackageManager.NameNotFoundException();
+                                i.addCategory(Intent.CATEGORY_LAUNCHER);
+                                startActivity(i);
+                            } catch (PackageManager.NameNotFoundException e) {
+                                Intent intent = new Intent(Intent.ACTION_VIEW);
+                                intent.setData(Uri.parse("market://details?id=com.botty.wall"));
+                                startActivity(intent);
+                            }
+                        } else if (position == 5) {
+                            Intent intent = new Intent(getApplicationContext(), Activity_About.class);
+                            startActivity(intent);
+                        }
+                    }
+                })
+                .withSelectedItem(0)
+                .build();
+    }
+
+    public boolean isPackageExisted(String targetPackage){
+        List<ApplicationInfo> packages;
+        PackageManager pm;
+        pm = getPackageManager();
+        packages = pm.getInstalledApplications(0);
+        for (ApplicationInfo packageInfo : packages) {
+            if(packageInfo.packageName.equals(targetPackage)) return true;
+        }
+        return false;
+    }
 
     // You need to do the Play Services APK check here too.
     @Override

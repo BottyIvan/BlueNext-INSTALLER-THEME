@@ -44,5 +44,9 @@
     <string name="change_your_rate">あなたの速度を変更するか、 ..</string>
     <string name="install_theme_frag_kill_you">テーマをインストール</string>
     <string name="rate_it_frag_kill_you">それを評価する</string>
+    <string name="fragment_kill_not_support_icons_and_req">アイコンとリクエスト</string>
 
+    <!-- Fragment_swipe -->
+    <string name="All_icons_tab">すべてのアイコン</string>
+    <string name="request_icons_tab">リクエスト</string>
 </resources>
