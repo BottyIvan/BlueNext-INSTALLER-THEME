@@ -255,7 +255,7 @@ public class MainActivity extends ActionBarActivity {
                             Fragment_Swiper fragment = new Fragment_Swiper();
                             fragmentTransaction.replace(R.id.content_frame, fragment);
                             fragmentTransaction.commit();
-                        } else if (position == 3) {
+                        } else if (position == 2) {
                             Intent i;
                             PackageManager manager = getPackageManager();
                             try {
@@ -269,7 +269,7 @@ public class MainActivity extends ActionBarActivity {
                                 intent.setData(Uri.parse("market://details?id=com.botty.wall"));
                                 startActivity(intent);
                             }
-                        } else if (position == 5) {
+                        } else if (position == 4) {
                             Intent intent = new Intent(getApplicationContext(), Activity_About.class);
                             startActivity(intent);
                         }

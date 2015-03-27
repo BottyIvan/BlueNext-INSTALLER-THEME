@@ -27,7 +27,7 @@
             android:title="@string/installer_on_github">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://github.com/BottyIvan/BlueNext-INSTALLER"/>
+                android:data="https://github.com/BottyIvan/BlueNext-INSTALLER-THEME"/>
             </PreferenceScreen>
         </PreferenceCategory>
 <PreferenceCategory
