@@ -16,6 +16,8 @@
 <a href="https://github.com/square/okhttp">okhttp</a><br>
 <a href="https://github.com/loopj/android-async-http">android-async-http</a><br>
 <a href="https://github.com/mikepenz/MaterialDrawer">materialdrawer</a><br>
+<a href="https://github.com/astuetz/PagerSlidingTabStrip">PagerSlidingTabStrip</a><br>
+<a href="https://github.com/makovkastar/FloatingActionButton">FloatingActionButton</a><br>
 
 <pre>Copyright (C) 2014/2015  Ivan Botty
 
