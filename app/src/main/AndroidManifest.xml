@@ -50,6 +50,7 @@
         <activity
             android:name=".Activities.Activity_About"
             android:label="@string/title_activity_about"
+            android:theme="@style/Botty.Install.Theme.Light"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
