@@ -13,7 +13,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentTop="true"
         android:dividerHeight="5dp"
-        android:layout_margin="5dp" />
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" />
 
     <com.melnykov.fab.FloatingActionButton
             android:id="@+id/fab"
@@ -22,8 +23,8 @@
             android:layout_gravity="bottom|right"
             android:layout_margin="16dp"
             android:src="@drawable/ic_action_check"
-            fab:fab_colorNormal="@color/material_blue_gray_500"
-            fab:fab_colorPressed="@color/material_blue_gray_200"
-            fab:fab_colorRipple="@color/material_blue_grey_800" />
+            fab:fab_colorNormal="@color/material_yellow_500"
+            fab:fab_colorPressed="@color/material_yellow_200"
+            fab:fab_colorRipple="@color/material_yellow_500" />
 
 </FrameLayout>

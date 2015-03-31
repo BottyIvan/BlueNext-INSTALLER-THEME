@@ -1,11 +1,14 @@
 package com.botty.theme.next.blue.Fragment;
 
+import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerTabStrip;
+import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -40,6 +43,7 @@ public class Fragment_Swiper extends Fragment{
 
     private Drawable oldBackground = null;
     private int currentColor = 0xffffffff;
+    private int yellowColor = 0xffffff00;
 
     public Toolbar toolbar;
 
@@ -47,6 +51,7 @@ public class Fragment_Swiper extends Fragment{
 
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,9 +69,8 @@ public class Fragment_Swiper extends Fragment{
         final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources()
                 .getDisplayMetrics());
         mViewPager.setPageMargin(pageMargin);
-
         tabs.setViewPager(mViewPager);
-        tabs.setIndicatorColor(currentColor);
+        tabs.setIndicatorColor(yellowColor);
         tabs.setTextColor(currentColor);
         tabs.setIndicatorHeight(5);
 

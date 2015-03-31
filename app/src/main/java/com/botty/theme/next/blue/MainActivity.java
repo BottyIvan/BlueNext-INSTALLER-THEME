@@ -11,6 +11,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -22,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.botty.theme.next.blue.Activities.Activity_About;
+import com.botty.theme.next.blue.Fragment.Donate;
 import com.botty.theme.next.blue.Fragment.Fragment_Swiper;
 import com.botty.theme.next.blue.Fragment.Kill_notSupport;
 import com.botty.theme.next.blue.Fragment.ThemeInst;
@@ -38,6 +41,7 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 
 import java.io.IOException;
 import java.util.List;
@@ -161,6 +165,7 @@ public class MainActivity extends ActionBarActivity {
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(getString(R.string.theme_item_drawer)).withIcon(FontAwesome.Icon.faw_download),
                         new PrimaryDrawerItem().withName(getString(R.string.icons_item_drawer)).withIcon(FontAwesome.Icon.faw_circle_o),
+                        new PrimaryDrawerItem().withName(getString(R.string.donate_item_drawer)).withIcon(FontAwesome.Icon.faw_money),
                         new PrimaryDrawerItem().withName(getString(R.string.wallpapers_item_drawer)).withIcon(FontAwesome.Icon.faw_picture_o).withBadge("◥"),
                         new SectionDrawerItem().withName(getString(R.string.some_stuff_item_drawer)),
                         new SecondaryDrawerItem().withName(getString(R.string.info_item_drawer)).withIcon(FontAwesome.Icon.faw_info)
@@ -168,16 +173,22 @@ public class MainActivity extends ActionBarActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
-                        if (position == 1) {
-                            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-                            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        if (position == 0) {
+                            FragmentManager fragmentManager = getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             ThemeInst fragment = new ThemeInst();
                             fragmentTransaction.replace(R.id.content_frame, fragment);
                             fragmentTransaction.commit();
-                        } else if (position == 2) {
-                            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-                            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        } else if (position == 1) {
+                            FragmentManager fragmentManager = getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             Fragment_Swiper fragment = new Fragment_Swiper();
+                            fragmentTransaction.replace(R.id.content_frame, fragment);
+                            fragmentTransaction.commit();
+                        } else if (position == 2) {
+                            FragmentManager fragmentManager = getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            Donate fragment = new Donate();
                             fragmentTransaction.replace(R.id.content_frame, fragment);
                             fragmentTransaction.commit();
                         } else if (position == 3) {
@@ -194,7 +205,7 @@ public class MainActivity extends ActionBarActivity {
                                 intent.setData(Uri.parse("market://details?id=com.botty.wall"));
                                 startActivity(intent);
                             }
-                        }else if (position == 5) {
+                        } else if (position == 5) {
                             Intent intent = new Intent(getApplicationContext(), Activity_About.class);
                             startActivity(intent);
                         }
@@ -242,6 +253,7 @@ public class MainActivity extends ActionBarActivity {
                 .withHeader(R.layout.my_header)
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(getString(R.string.icons_item_drawer)).withIcon(FontAwesome.Icon.faw_circle_o),
+                        new PrimaryDrawerItem().withName(getString(R.string.donate_item_drawer)).withIcon(FontAwesome.Icon.faw_money),
                         new PrimaryDrawerItem().withName(getString(R.string.wallpapers_item_drawer)).withIcon(FontAwesome.Icon.faw_picture_o).withBadge("◥"),
                         new SectionDrawerItem().withName(getString(R.string.some_stuff_item_drawer)),
                         new SecondaryDrawerItem().withName(getString(R.string.info_item_drawer)).withIcon(FontAwesome.Icon.faw_info)
@@ -249,10 +261,16 @@ public class MainActivity extends ActionBarActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
-                        if (position == 1) {
+                        if (position == 0) {
                             android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
                             android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             Fragment_Swiper fragment = new Fragment_Swiper();
+                            fragmentTransaction.replace(R.id.content_frame, fragment);
+                            fragmentTransaction.commit();
+                        } else if (position == 1) {
+                            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            Donate fragment = new Donate();
                             fragmentTransaction.replace(R.id.content_frame, fragment);
                             fragmentTransaction.commit();
                         } else if (position == 2) {
