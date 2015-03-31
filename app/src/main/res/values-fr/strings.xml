@@ -49,4 +49,5 @@
     <!-- Fragment_swipe -->
     <string name="All_icons_tab">Toutes les icônes</string>
     <string name="request_icons_tab">Demande</string>
+    <string name="donate_item_drawer">Donate</string>
 </resources>

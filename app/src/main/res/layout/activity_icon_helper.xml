@@ -23,8 +23,8 @@
             android:layout_gravity="bottom|right"
             android:layout_margin="16dp"
             android:src="@drawable/ic_action_check"
-            fab:fab_colorNormal="@color/material_cyan_500"
-            fab:fab_colorPressed="@color/material_cyan_200"
-            fab:fab_colorRipple="@color/material_cyan_500" />
+            fab:fab_colorNormal="@color/material_yellow_500"
+            fab:fab_colorPressed="@color/material_yellow_200"
+            fab:fab_colorRipple="@color/material_yellow_500" />
 
 </FrameLayout>

@@ -29,7 +29,8 @@
                 android:text="Blue Next"
                 android:id="@+id/textView2"
                 android:layout_gravity="center"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/white" />
         </FrameLayout>
 
     </FrameLayout>

@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import com.koushikdutta.async.future.Future;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.koushikdutta.ion.ProgressCallback;
+import com.melnykov.fab.FloatingActionButton;
 
 import java.io.File;
 
@@ -31,7 +33,7 @@ import java.io.File;
  */
 public class ThemeInst extends Fragment {
 
-    ImageButton mInstaTheme;
+    FloatingActionButton mInstaTheme;
     ProgressDialog progressDialog;
     TextView info;
     String theme_name;
@@ -63,7 +65,7 @@ public class ThemeInst extends Fragment {
             info.setText(Html.fromHtml("<body><br><b>NOTE: <font color='blue'>THIS IS THE CURRENT RELEASE !!</font><br><br>Try this very very cool theme !! It's work with CM/PA/MAHDI and more !!</b></body>"));
         }
 
-        mInstaTheme = (ImageButton)view.findViewById(R.id.download_theme);
+        mInstaTheme = (FloatingActionButton)view.findViewById(R.id.download_theme);
 
         PreferenceManager.setDefaultValues(getActivity(), R.xml.about, true);
         settings = PreferenceManager.getDefaultSharedPreferences(getActivity());

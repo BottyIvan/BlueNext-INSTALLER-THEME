@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <com.flaviofaria.kenburnsview.KenBurnsView
+            android:id="@+id/image"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:src="@drawable/wallpaper1"
+            android:scaleType="centerCrop" />
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/shape"/>
+
+        <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/donate_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:src="@drawable/gwall_logo_vrt_oc_rgb_wht_rev"
+            fab:fab_colorNormal="@color/material_yellow_500"
+            fab:fab_colorPressed="@color/material_yellow_200"
+            fab:fab_colorRipple="@color/material_yellow_500"
+            android:scaleType="centerInside"
+            android:layout_margin="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="I need your help to keep on-line the server for download theme !\nI&apos;ll ask for one coffee.. "
+            android:id="@+id/textView4"
+            android:layout_gravity="center"
+            android:padding="15dp"
+            android:textColor="@color/white" />
+
+    </FrameLayout>
+</RelativeLayout>

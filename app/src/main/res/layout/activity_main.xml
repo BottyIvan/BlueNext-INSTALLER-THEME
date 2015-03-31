@@ -19,7 +19,7 @@
             <FrameLayout
                 android:layout_width="fill_parent"
                 android:layout_height="25dp"
-                android:background="@color/material_blue_gray_700"/>
+                android:background="@color/material_cyan_500"/>
 
             <include
                 android:id="@+id/toolbar"

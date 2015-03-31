@@ -2,25 +2,25 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="Botty.Install.Theme" parent="Theme.AppCompat">
+    <style name="Botty.Install.Theme" parent="MaterialDrawerTheme.TranslucentStatus">
         <!-- Customize your theme here. -->
         <item name="windowActionBar">false</item>
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:colorPrimaryDark">@color/material_blue_grey_800</item>
-        <item name="android:colorPrimary">@color/material_blue_gray_500</item>
-        <item name="android:colorAccent">@color/material_blue_gray_200</item>
-        <item name="android:colorActivatedHighlight">@color/material_blue_gray_200</item>
-        <item name="android:colorEdgeEffect">@color/material_blue_gray_200</item>
+        <item name="android:colorPrimaryDark">@color/material_cyan_700</item>
+        <item name="android:colorPrimary">@color/material_cyan_200</item>
+        <item name="android:colorAccent">@color/material_cyan_700</item>
+        <item name="android:colorActivatedHighlight">@color/material_yellow_200</item>
+        <item name="android:colorEdgeEffect">@color/white</item>
     </style>
 
-    <style name="Botty.Install.Theme.Light" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Botty.Install.Theme.Light" parent="MaterialDrawerTheme.Light.DarkToolbar.TranslucentStatus">
         <!-- Customize your theme here. -->
         <item name="windowActionBar">false</item>
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:colorPrimaryDark">@color/material_blue_grey_800</item>
-        <item name="android:colorPrimary">@color/material_blue_gray_500</item>
-        <item name="android:colorAccent">@color/material_blue_gray_200</item>
-        <item name="android:colorActivatedHighlight">@color/material_blue_gray_200</item>
-        <item name="android:colorEdgeEffect">@color/material_blue_gray_200</item>
+        <item name="android:colorPrimaryDark">@color/material_cyan_700</item>
+        <item name="android:colorPrimary">@color/material_cyan_200</item>
+        <item name="android:colorAccent">@color/material_cyan_700</item>
+        <item name="android:colorActivatedHighlight">@color/material_yellow_200</item>
+        <item name="android:colorEdgeEffect">@color/white</item>
     </style>
 </resources>

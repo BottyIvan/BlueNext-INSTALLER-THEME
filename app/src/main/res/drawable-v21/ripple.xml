@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="@color/material_cyan_200">
+    android:color="@color/material_yellow_200">
     <item>
         <shape android:shape="oval">
-            <solid android:color="@color/material_cyan_500" />
+            <solid android:color="@color/material_yellow_500" />
         </shape>
     </item>
 </ripple>
