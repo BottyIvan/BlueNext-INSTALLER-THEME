@@ -7,6 +7,8 @@
     <string name="navigation_drawer_open">Wall</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+    <string name="title_activity_about" translatable="false">About</string>
+    <string name="title_activity_donate" translatable="false">Donate</string>
 
     <!-- About fragment -->
     <string name="theme_option">Theme Option</string>
@@ -20,7 +22,7 @@
     <string name="contact_category">Contact us/me or your pets/family/spirit or anything else ?</string>
 
     <!-- Not translate Version info -->
-    <string name="info_for_installer" translatable="false">Version Installer: 1.8</string>
+    <string name="info_for_installer" translatable="false">Version Installer: 2.0-beta</string>
     <string name="info_for_bleu_next" translatable="false">Version Blue Next: 0.6.4-senpai</string>
     <string name="info_for_blue_next_lollipop" translatable="false">Version Blue Next: 0.0.7+</string>
     <string name="info_rev_dark_lollipop" translatable="false">Version Blue Next rev_Dark: 0.0.7+</string>
@@ -46,6 +48,7 @@
     <!-- drawer item -->
     <string name="theme_item_drawer">Theme</string>
     <string name="icons_item_drawer">Icons</string>
+    <string name="donate_item_drawer">Donate</string>
     <string name="wallpapers_item_drawer">Wallpapers</string>
     <string name="some_stuff_item_drawer">Some stuff</string>
     <string name="info_item_drawer">Info</string>
@@ -61,7 +64,5 @@
     <!-- Fragment_swipe -->
     <string name="All_icons_tab">All Icons</string>
     <string name="request_icons_tab">Request</string>
-    <string name="title_activity_about">About</string>
-    <string name="donate_item_drawer">Donate</string>
 
 </resources>

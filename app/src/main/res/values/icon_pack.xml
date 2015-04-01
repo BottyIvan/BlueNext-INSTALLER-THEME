@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 
-   <string-array name="icon_pack" translatable="true">
+   <string-array name="icon_pack" translatable="false">
       <!-- Blue Cyngn Next icons Basic AOSP App-->
        <item>browser</item>
        <item>calculator</item>

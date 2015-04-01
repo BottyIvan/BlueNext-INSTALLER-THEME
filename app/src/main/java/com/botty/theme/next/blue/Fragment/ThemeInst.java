@@ -20,6 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.botty.theme.next.blue.R;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.koushikdutta.async.future.Future;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
@@ -66,7 +68,8 @@ public class ThemeInst extends Fragment {
         }
 
         mInstaTheme = (FloatingActionButton)view.findViewById(R.id.download_theme);
-
+        YoYo.with(Techniques.FadeInUp)
+                .playOn(mInstaTheme);
         PreferenceManager.setDefaultValues(getActivity(), R.xml.about, true);
         settings = PreferenceManager.getDefaultSharedPreferences(getActivity());
 

@@ -34,6 +34,8 @@ import android.widget.Toast;
 
 import com.botty.theme.next.blue.Util.AppInfo;
 import com.botty.theme.next.blue.R;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.melnykov.fab.FloatingActionButton;
 
 import java.io.BufferedReader;
@@ -128,6 +130,8 @@ public class IconHelp extends Fragment {
         dataAdapter = new MyCustomAdapter(getActivity(),R.layout.app_info, appList);
         ListView listView = (ListView) view.findViewById(R.id.listApps);
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        YoYo.with(Techniques.FadeInUp)
+                .playOn(fab);
         fab.attachToListView(listView);
         // Assign adapter to ListView
         listView.setAdapter(dataAdapter);
@@ -260,7 +264,7 @@ public class IconHelp extends Fragment {
             mNotificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
 
             //create the notification
-            int icon = R.drawable.icon;
+            int icon = R.mipmap.ic_launcher;
             CharSequence tickerText = mContext.getString(R.string.activity_uploaded_notify); //Initial text that appears in the status bar
             long when = System.currentTimeMillis();
             mNotification = new Notification(icon, tickerText, when);

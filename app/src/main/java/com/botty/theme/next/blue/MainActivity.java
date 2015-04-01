@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,16 +21,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.botty.theme.next.blue.Activities.Activity_About;
-import com.botty.theme.next.blue.Fragment.Donate;
+import com.botty.theme.next.blue.Activities.Donate;
 import com.botty.theme.next.blue.Fragment.Fragment_Swiper;
 import com.botty.theme.next.blue.Fragment.Kill_notSupport;
 import com.botty.theme.next.blue.Fragment.ThemeInst;
 import com.botty.theme.next.blue.Fragment.kill;
-import com.botty.theme.next.blue.Util.AlertDialogManager;
 import com.botty.theme.next.blue.Util.ConnectionDetector;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -41,16 +40,15 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.Nameable;
+import com.nispok.snackbar.Snackbar;
+import com.nispok.snackbar.enums.SnackbarType;
+import com.nispok.snackbar.listeners.ActionClickListener;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class MainActivity extends ActionBarActivity {
-
-    AlertDialogManager alert = new AlertDialogManager();
 
     // Connection detector
     ConnectionDetector cd;
@@ -72,10 +70,7 @@ public class MainActivity extends ActionBarActivity {
     static final String TAG = "GCMDemo";
 
     static public String PackageThemeCM = "org.cyanogenmod.themes.provider";
-    TextView mDisplay;
     GoogleCloudMessaging gcm;
-    AtomicInteger msgId = new AtomicInteger();
-    SharedPreferences prefs;
     Context context;
 
     String regid;
@@ -86,6 +81,16 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        if(isPackageExisted(PackageThemeCM)){
+            ThemeSupported();
+        }else {
+            ThemeNotSupported();
+        }
+
+        ImageView back = (ImageView) findViewById(R.id.imgBack);
+        Ion.with(back).load("https://lh4.googleusercontent.com/-L8u7iZ3cdgI/VPCGCbV2m8I/AAAAAAAABxA/nnIoWqLbt5k/s1024-no/web_hi_res_512.pngx");
 
         context = getApplicationContext();
         cd = new ConnectionDetector(getApplicationContext());
@@ -93,9 +98,20 @@ public class MainActivity extends ActionBarActivity {
         // Check if Internet present
         if (!cd.isConnectingToInternet()) {
             // Internet Connection is not present
-            alert.showAlertDialog(MainActivity.this,
-                    "Internet Connection Error",
-                    "Please connect to working Internet connection", false);
+            Snackbar.with(getApplicationContext()) // context
+                    .type(SnackbarType.MULTI_LINE) // Set is as a multi-line snackbar
+                    .text("Internet Connection Error,\n" +
+                            "Please connect to working Internet connection")
+                    .actionLabel("Undo") // action button label
+                    .actionColor(Color.YELLOW) // action button label color
+                    .actionListener(new ActionClickListener() {
+                        @Override
+                        public void onActionClicked(Snackbar snackbar) {
+                            Log.d(TAG, "Undoing something");
+                        }
+                    }) // action button's ActionClickListener
+                    .duration(Snackbar.SnackbarDuration.LENGTH_SHORT) // make it shorter
+                    .show(this); // activity where it is displayed
             // stop executing code by return
             return;
         }
@@ -112,18 +128,6 @@ public class MainActivity extends ActionBarActivity {
         }else {
             Log.i(TAG, "No valid Google Play Services APK found.");
         }
-
-        setContentView(R.layout.activity_main);
-
-        if(isPackageExisted(PackageThemeCM)){
-            ThemeSupported();
-        }else {
-            ThemeNotSupported();
-        }
-
-        ImageView back = (ImageView) findViewById(R.id.imgBack);
-        Ion.with(back).load("https://lh4.googleusercontent.com/-L8u7iZ3cdgI/VPCGCbV2m8I/AAAAAAAABxA/nnIoWqLbt5k/s1024-no/web_hi_res_512.pngx");
-
         }
 
     public void ThemeSupported(){
@@ -165,7 +169,7 @@ public class MainActivity extends ActionBarActivity {
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(getString(R.string.theme_item_drawer)).withIcon(FontAwesome.Icon.faw_download),
                         new PrimaryDrawerItem().withName(getString(R.string.icons_item_drawer)).withIcon(FontAwesome.Icon.faw_circle_o),
-                        new PrimaryDrawerItem().withName(getString(R.string.donate_item_drawer)).withIcon(FontAwesome.Icon.faw_money),
+                        new PrimaryDrawerItem().withName(getString(R.string.donate_item_drawer)).withIcon(FontAwesome.Icon.faw_money).setEnabled(false),
                         new PrimaryDrawerItem().withName(getString(R.string.wallpapers_item_drawer)).withIcon(FontAwesome.Icon.faw_picture_o).withBadge("◥"),
                         new SectionDrawerItem().withName(getString(R.string.some_stuff_item_drawer)),
                         new SecondaryDrawerItem().withName(getString(R.string.info_item_drawer)).withIcon(FontAwesome.Icon.faw_info)
@@ -186,11 +190,8 @@ public class MainActivity extends ActionBarActivity {
                             fragmentTransaction.replace(R.id.content_frame, fragment);
                             fragmentTransaction.commit();
                         } else if (position == 2) {
-                            FragmentManager fragmentManager = getSupportFragmentManager();
-                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                            Donate fragment = new Donate();
-                            fragmentTransaction.replace(R.id.content_frame, fragment);
-                            fragmentTransaction.commit();
+                            Intent intent = new Intent(getApplicationContext(), Donate.class);
+                            startActivity(intent);
                         } else if (position == 3) {
                             Intent i;
                             PackageManager manager = getPackageManager();
@@ -253,7 +254,7 @@ public class MainActivity extends ActionBarActivity {
                 .withHeader(R.layout.my_header)
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(getString(R.string.icons_item_drawer)).withIcon(FontAwesome.Icon.faw_circle_o),
-                        new PrimaryDrawerItem().withName(getString(R.string.donate_item_drawer)).withIcon(FontAwesome.Icon.faw_money),
+                        new PrimaryDrawerItem().withName(getString(R.string.donate_item_drawer)).withIcon(FontAwesome.Icon.faw_money).setEnabled(false),
                         new PrimaryDrawerItem().withName(getString(R.string.wallpapers_item_drawer)).withIcon(FontAwesome.Icon.faw_picture_o).withBadge("◥"),
                         new SectionDrawerItem().withName(getString(R.string.some_stuff_item_drawer)),
                         new SecondaryDrawerItem().withName(getString(R.string.info_item_drawer)).withIcon(FontAwesome.Icon.faw_info)
@@ -268,11 +269,8 @@ public class MainActivity extends ActionBarActivity {
                             fragmentTransaction.replace(R.id.content_frame, fragment);
                             fragmentTransaction.commit();
                         } else if (position == 1) {
-                            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-                            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                            Donate fragment = new Donate();
-                            fragmentTransaction.replace(R.id.content_frame, fragment);
-                            fragmentTransaction.commit();
+                            Intent intent = new Intent(getApplicationContext(), Donate.class);
+                            startActivity(intent);
                         } else if (position == 2) {
                             Intent i;
                             PackageManager manager = getPackageManager();

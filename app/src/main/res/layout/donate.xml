@@ -37,11 +37,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="I need your help to keep on-line the server for download theme !\nI&apos;ll ask for one coffee.. "
+            android:text="I need your help to keep on-line the server for download theme and Wallpapers!\nI&apos;ll ask for one coffee.. "
             android:id="@+id/textView4"
             android:layout_gravity="center"
             android:padding="15dp"
             android:textColor="@color/white" />
 
+        <android.support.v7.widget.Toolbar
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/toolbar_trasp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/trasp"
+            android:fitsSystemWindows="true"/>
+
     </FrameLayout>
+
 </RelativeLayout>

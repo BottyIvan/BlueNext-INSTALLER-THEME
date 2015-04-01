@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.android.vending.BILLING" />
 
     <permission
         android:name="com.botty.theme.next.blue.permission.C2D_MESSAGE"
@@ -29,7 +30,7 @@
             android:screenOrientation="nosensor" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.anddoes.launcher.THEME" />
+               <!-- <category android:name="com.anddoes.launcher.THEME" /> -->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -50,6 +51,15 @@
         <activity
             android:name=".Activities.Activity_About"
             android:label="@string/title_activity_about"
+            android:theme="@style/Botty.Install.Theme.Light"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.botty.theme.next.blue.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.Donate"
+            android:label="@string/title_activity_donate"
             android:theme="@style/Botty.Install.Theme.Light"
             android:parentActivityName=".MainActivity">
             <meta-data

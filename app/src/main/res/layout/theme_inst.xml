@@ -34,13 +34,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="200dp"
                 card_view:cardCornerRadius="0dp">
-                <ImageView
+                <com.flaviofaria.kenburnsview.KenBurnsView
+                    android:id="@+id/img"
                     android:layout_width="fill_parent"
-                    android:layout_height="200dp"
-                    android:id="@+id/imageView"
-                    android:src="@drawable/wallpaper1"
-                    android:scaleType="centerCrop"
-                    android:layout_gravity="center_horizontal|top" />
+                    android:layout_height="fill_parent"
+                    android:src="@drawable/wallpaper1" />
             </android.support.v7.widget.CardView>
 
         </FrameLayout>
