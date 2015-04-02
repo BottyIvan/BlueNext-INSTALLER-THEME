@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="items">
+        <item>Some love: 00.51€</item>
+        <item>Love: 00.71€</item>
+        <item>Pure love: 01.01€</item>
+    </string-array>
+</resources>

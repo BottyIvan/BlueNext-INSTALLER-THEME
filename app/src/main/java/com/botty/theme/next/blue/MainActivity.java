@@ -169,7 +169,7 @@ public class MainActivity extends ActionBarActivity {
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(getString(R.string.theme_item_drawer)).withIcon(FontAwesome.Icon.faw_download),
                         new PrimaryDrawerItem().withName(getString(R.string.icons_item_drawer)).withIcon(FontAwesome.Icon.faw_circle_o),
-                        new PrimaryDrawerItem().withName(getString(R.string.donate_item_drawer)).withIcon(FontAwesome.Icon.faw_money).setEnabled(false),
+                        new PrimaryDrawerItem().withName(getString(R.string.donate_item_drawer)).withIcon(FontAwesome.Icon.faw_money),
                         new PrimaryDrawerItem().withName(getString(R.string.wallpapers_item_drawer)).withIcon(FontAwesome.Icon.faw_picture_o).withBadge("◥"),
                         new SectionDrawerItem().withName(getString(R.string.some_stuff_item_drawer)),
                         new SecondaryDrawerItem().withName(getString(R.string.info_item_drawer)).withIcon(FontAwesome.Icon.faw_info)
@@ -254,7 +254,7 @@ public class MainActivity extends ActionBarActivity {
                 .withHeader(R.layout.my_header)
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(getString(R.string.icons_item_drawer)).withIcon(FontAwesome.Icon.faw_circle_o),
-                        new PrimaryDrawerItem().withName(getString(R.string.donate_item_drawer)).withIcon(FontAwesome.Icon.faw_money).setEnabled(false),
+                        new PrimaryDrawerItem().withName(getString(R.string.donate_item_drawer)).withIcon(FontAwesome.Icon.faw_money),
                         new PrimaryDrawerItem().withName(getString(R.string.wallpapers_item_drawer)).withIcon(FontAwesome.Icon.faw_picture_o).withBadge("◥"),
                         new SectionDrawerItem().withName(getString(R.string.some_stuff_item_drawer)),
                         new SecondaryDrawerItem().withName(getString(R.string.info_item_drawer)).withIcon(FontAwesome.Icon.faw_info)

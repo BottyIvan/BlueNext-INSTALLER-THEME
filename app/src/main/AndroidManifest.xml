@@ -30,7 +30,7 @@
             android:screenOrientation="nosensor" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-               <!-- <category android:name="com.anddoes.launcher.THEME" /> -->
+                <category android:name="com.anddoes.launcher.THEME" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

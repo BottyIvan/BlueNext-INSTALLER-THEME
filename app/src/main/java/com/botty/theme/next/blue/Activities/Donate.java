@@ -12,7 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.anjlab.android.iab.v3.BillingProcessor;
 import com.anjlab.android.iab.v3.TransactionDetails;
 import com.botty.theme.next.blue.R;
@@ -44,8 +46,10 @@ public class Donate extends ActionBarActivity implements BillingProcessor.IBilli
     FloatingActionButton fab_donate;
     private boolean readyToPurchase = false;
     private static final String LOG_TAG = "";
-    private static final String PRODUCT_ID = "";
-    private static final String LICENSE_KEY = "YOUR LICENSE KEY FOR THIS APPLICATION";
+    public static final String PRODUCT_ID_0 = "some_love";
+    public static final String PRODUCT_ID_1 = "love";
+    public static final String PRODUCT_ID_2 = "pure_love";
+    public static final String LICENSE_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA274wObbop79owruTuMGezSuODLIs0779EsEDgP/DIqBdPiXBQHlXLCjyo4x96cg7DqxEEw3cPEi4GzlwaCDwY7Ei3uxXHC95wCWVMwT2c+oQ9Jk7v8fT2VZ4jlUO3fRpaNJikeH5B4fmcwv6ZNklVElK4rUFiadvKHkNLCfaDhNGuR1wCx3HFSJDUtfP74d96JcSk+6iZQLS2LvKIMyxiC5BOMVQ4WhtEkN4yhPqaS5WlME9XvzAT1LQzrubWOfWgS/bLBV5SqoiH2V4Mf3oRicoiSgNCna48OvKgyGSWe37i+GbGKRz+hmLXJwCRep9zUatiz1RicgK9u969MY8vwIDAQAB";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +62,7 @@ public class Donate extends ActionBarActivity implements BillingProcessor.IBilli
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         GetInternetConnection();
+        bp = new BillingProcessor(this, LICENSE_KEY, this);
 
         fab_donate = (FloatingActionButton) findViewById(R.id.donate_btn);
         YoYo.with(Techniques.FadeInUp)
@@ -65,11 +70,32 @@ public class Donate extends ActionBarActivity implements BillingProcessor.IBilli
         fab_donate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // bp.purchase(PRODUCT_ID);
-                // bp.consumePurchase(PRODUCT_ID);
+                MaterialDialogChoice();
             }
         });
-        bp = new BillingProcessor(this, "YOUR LICENSE KEY FROM GOOGLE PLAY CONSOLE HERE", this);
+    }
+
+    public void MaterialDialogChoice(){
+        new MaterialDialog.Builder(this)
+                .title(R.string.title_material_dialog_donate)
+                .items(R.array.items)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+                        if (which == 0) {
+                            bp.purchase(Donate.this, PRODUCT_ID_0);
+                            bp.consumePurchase(PRODUCT_ID_0);
+                        } else if (which == 1) {
+                            bp.purchase(Donate.this, PRODUCT_ID_1);
+                            bp.consumePurchase(PRODUCT_ID_1);
+                        } else if (which == 2) {
+                            bp.purchase(Donate.this, PRODUCT_ID_2);
+                            bp.consumePurchase(PRODUCT_ID_2);
+                        }
+                    }
+                })
+                .positiveText(android.R.string.cancel)
+                .show();
     }
 
     public void GetInternetConnection(){

@@ -50,4 +50,8 @@
     <string name="All_icons_tab">Toutes les icônes</string>
     <string name="request_icons_tab">Demande</string>
     <string name="donate_item_drawer">Donate</string>
+
+    <!-- Activity Donate -->
+    <string name="title_material_dialog_donate">Donate</string>
+    <string name="choose_material_dialog_donate">choose</string>
 </resources>
