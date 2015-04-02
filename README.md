@@ -21,6 +21,8 @@
 <a href="https://github.com/anjlab/android-inapp-billing-v3">android-inapp-billing-v3<a><br>
 <a href="https://github.com/nispok/snackbar">snackbar</a><br>
 <a href="https://github.com/daimajia/AndroidViewAnimations">AndroidViewAnimations</a><br>
+<a href="https://github.com/afollestad/material-dialogs">material-dialogs</a><br>
+
 <pre>Copyright (C) 2014/2015  Ivan Botty
 
     This program is free software: you can redistribute it and/or modify
