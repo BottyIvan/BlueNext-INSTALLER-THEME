@@ -23,13 +23,13 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Botty.Install.Theme.Light" >
+        android:theme="@style/Botty.Theme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="nosensor" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.anddoes.launcher.THEME" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -51,8 +51,8 @@
         <activity
             android:name=".Activities.Activity_About"
             android:label="@string/title_activity_about"
-            android:theme="@style/Botty.Install.Theme.Light"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Botty.Theme.About" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.botty.theme.next.blue.MainActivity" />
@@ -60,11 +60,20 @@
         <activity
             android:name=".Activities.Donate"
             android:label="@string/title_activity_donate"
-            android:theme="@style/Botty.Install.Theme.Light"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Botty.Theme.Donate" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.botty.theme.next.blue.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.MyIntro"
+            android:label="@string/title_activity_my_intro"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="com.botty.theme.next.blue.Activities.MyIntro"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

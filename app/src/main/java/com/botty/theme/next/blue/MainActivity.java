@@ -1,6 +1,9 @@
 package com.botty.theme.next.blue;
 
+
+import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
@@ -9,33 +12,39 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.botty.theme.next.blue.Activities.Activity_About;
 import com.botty.theme.next.blue.Activities.Donate;
+import com.botty.theme.next.blue.Activities.MyIntro;
 import com.botty.theme.next.blue.Fragment.Fragment_Swiper;
-import com.botty.theme.next.blue.Fragment.Kill_notSupport;
 import com.botty.theme.next.blue.Fragment.ThemeInst;
-import com.botty.theme.next.blue.Fragment.kill;
 import com.botty.theme.next.blue.Util.ConnectionDetector;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
-import com.koushikdutta.ion.Ion;
-import com.mikepenz.iconics.typeface.FontAwesome;
+import com.mikepenz.aboutlibraries.Libs;
+import com.mikepenz.aboutlibraries.LibsBuilder;
+import com.mikepenz.aboutlibraries.ui.LibsFragment;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
@@ -45,10 +54,10 @@ import com.nispok.snackbar.enums.SnackbarType;
 import com.nispok.snackbar.listeners.ActionClickListener;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     // Connection detector
     ConnectionDetector cd;
@@ -74,23 +83,43 @@ public class MainActivity extends ActionBarActivity {
     Context context;
 
     String regid;
-    FrameLayout frameLayout;
+    Toolbar toolbar;
+    ImageView backwall;
+    FrameLayout frameLayout,back;
 
-    private Drawer.Result drawerMaterial = null;
+    private Drawer result = null;
+
+    /*
+     * Ask permission
+     */
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
+    final private int REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 124;
+
+    private PackageManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(isPackageExisted(PackageThemeCM)){
-            ThemeSupported();
-        }else {
-            ThemeNotSupported();
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        ImageView back = (ImageView) findViewById(R.id.imgBack);
-        Ion.with(back).load("https://lh4.googleusercontent.com/-L8u7iZ3cdgI/VPCGCbV2m8I/AAAAAAAABxA/nnIoWqLbt5k/s1024-no/web_hi_res_512.pngx");
+        frameLayout = (FrameLayout) findViewById(R.id.content_frame);
+
+        final StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                .permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            iCanM();
+            UIforM();
+        }else{
+            UIforM();
+        }
 
         context = getApplicationContext();
         cd = new ConnectionDetector(getApplicationContext());
@@ -101,7 +130,7 @@ public class MainActivity extends ActionBarActivity {
             Snackbar.with(getApplicationContext()) // context
                     .type(SnackbarType.MULTI_LINE) // Set is as a multi-line snackbar
                     .text("Internet Connection Error,\n" +
-                            "Please connect to working Internet connection")
+                            getString(R.string.snackbar_internet_req))
                     .actionLabel("Undo") // action button label
                     .actionColor(Color.YELLOW) // action button label color
                     .actionListener(new ActionClickListener() {
@@ -115,6 +144,8 @@ public class MainActivity extends ActionBarActivity {
             // stop executing code by return
             return;
         }
+
+
         // Check device for Play Services APK.
         if (checkPlayServices()) {
             // If this check succeeds, proceed with normal processing.
@@ -128,27 +159,103 @@ public class MainActivity extends ActionBarActivity {
         }else {
             Log.i(TAG, "No valid Google Play Services APK found.");
         }
-        }
 
-    public void ThemeSupported(){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-        frameLayout = (FrameLayout) findViewById(R.id.content_frame);
+    }
 
-        final StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-                .permitAll().build();
-        StrictMode.setThreadPolicy(policy);
+    public void UIforM(){
+        if (isPackageExisted(PackageThemeCM)) {
+            ThemeSupported();
+        } else {
+            ThemeNotSupported();
+        }
+    }
+    private void iCanM(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            List<String> permissionsNeeded = new ArrayList<String>();
+
+        final List<String> permissionsList = new ArrayList<String>();
+        if (!addPermission(permissionsList, Manifest.permission.WRITE_EXTERNAL_STORAGE))
+            permissionsNeeded.add("Read/Write Storage");
+        if (!addPermission(permissionsList, Manifest.permission.GET_ACCOUNTS))
+            permissionsNeeded.add("Get Account");
+
+        if (permissionsList.size() > 0) {
+            if (permissionsNeeded.size() > 0) {
+                // Need Rationale
+                String message = "You need to grant access to the permission for use the app !!";
+                showMessageOKCancel(message,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                    requestPermissions(permissionsList.toArray(new String[permissionsList.size()]),
+                                            REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
+                                }
+                            }
+                        });
+                return;
+            }
+                requestPermissions(permissionsList.toArray(new String[permissionsList.size()]),
+                        REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
+            return;
+        }}
+
+    }
+
+    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(MainActivity.this)
+                .setMessage(message)
+                .setPositiveButton("OK", okListener)
+                .setNegativeButton("Cancel", null)
+                .create()
+                .show();
+    }
+
+    private boolean addPermission(List<String> permissionsList, String permission) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
+            permissionsList.add(permission);
+            // Check for Rationale Option
+            if (!shouldShowRequestPermissionRationale(permission))
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_ASK_PERMISSIONS:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Permission Granted
+                    UIforM();
+                } else {
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+                        UIforM();
+                    }else {
+                        // Permission Denied
+                        String msg = "You need to grant access to Write/read storage for download the theme !";
+                       showMessageOKCancel(msg, new DialogInterface.OnClickListener() {
+                           @Override
+                           public void onClick(DialogInterface dialog, int which) {
+                               Intent i = manager.getLaunchIntentForPackage("com.android.settings");
+                               MainActivity.this.startActivity(i);
+                           }
+                       });
+                    }
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+    public void ThemeSupported() {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if(!prefs.getBoolean("firstTime", false)) {
-            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            kill fragment = new kill();
-            fragmentTransaction.replace(R.id.content_frame, fragment);
-            fragmentTransaction.commit();
+            Intent intent = new Intent(this, MyIntro.class);
+            startActivity(intent);
             // run your one time code
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean("firstTime", true);
@@ -161,31 +268,121 @@ public class MainActivity extends ActionBarActivity {
             fragmentTransaction.commit();
         }
 
-        drawerMaterial = new Drawer()
+        // Handle Toolbar
+        result = new DrawerBuilder()
                 .withActivity(this)
                 .withToolbar(toolbar)
+                .withTranslucentStatusBar(true)
                 .withActionBarDrawerToggle(true)
                 .withHeader(R.layout.my_header)
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(getString(R.string.theme_item_drawer)).withIcon(FontAwesome.Icon.faw_download),
                         new PrimaryDrawerItem().withName(getString(R.string.icons_item_drawer)).withIcon(FontAwesome.Icon.faw_circle_o),
-                        new PrimaryDrawerItem().withName(getString(R.string.donate_item_drawer)).withIcon(FontAwesome.Icon.faw_money),
-                        new PrimaryDrawerItem().withName(getString(R.string.wallpapers_item_drawer)).withIcon(FontAwesome.Icon.faw_picture_o).withBadge("◥"),
+                        new PrimaryDrawerItem().withName(getString(R.string.donate_item_drawer)).withIcon(FontAwesome.Icon.faw_dot_circle_o),
+                        new PrimaryDrawerItem().withName(getString(R.string.wallpapers_item_drawer)).withIcon(FontAwesome.Icon.faw_picture_o),
                         new SectionDrawerItem().withName(getString(R.string.some_stuff_item_drawer)),
-                        new SecondaryDrawerItem().withName(getString(R.string.info_item_drawer)).withIcon(FontAwesome.Icon.faw_info)
+                        new SecondaryDrawerItem().withName(getString(R.string.info_item_drawer)).withIcon(FontAwesome.Icon.faw_info),
+                        new SecondaryDrawerItem().withName("OpenStuff").withIcon(FontAwesome.Icon.faw_github)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
-                        if (position == 0) {
+                    public boolean onItemClick(View view, int position, IDrawerItem iDrawerItem) {
+                        if (position == 1) {
                             FragmentManager fragmentManager = getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             ThemeInst fragment = new ThemeInst();
                             fragmentTransaction.replace(R.id.content_frame, fragment);
                             fragmentTransaction.commit();
-                        } else if (position == 1) {
+                        } else if (position == 2) {
                             FragmentManager fragmentManager = getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            Fragment_Swiper fragment = new Fragment_Swiper();
+                            fragmentTransaction.replace(R.id.content_frame, fragment);
+                            fragmentTransaction.commit();
+                        } else if (position == 3) {
+                            Intent intent = new Intent(getApplicationContext(), Donate.class);
+                            startActivity(intent);
+                        } else if (position == 4) {
+                            Intent i;
+                            PackageManager manager = getPackageManager();
+                            try {
+                                i = manager.getLaunchIntentForPackage("com.botty.wall");
+                                if (i == null)
+                                    throw new PackageManager.NameNotFoundException();
+                                i.addCategory(Intent.CATEGORY_LAUNCHER);
+                                startActivity(i);
+                            } catch (PackageManager.NameNotFoundException e) {
+                                Intent intent = new Intent(Intent.ACTION_VIEW);
+                                intent.setData(Uri.parse("market://details?id=com.botty.wall"));
+                                startActivity(intent);
+                            }
+                        } else if (position == 6) {
+                            Intent intent = new Intent(getApplicationContext(), Activity_About.class);
+                            startActivity(intent);
+                        } else if (position == 7) {
+                            LibsFragment fragment = new LibsBuilder()
+                                    .withLibraries()
+                                    .withAboutAppName(getString(R.string.app_name))
+                                    .withAboutDescription(getString(R.string.description_in_about_library))
+                                    .withAboutIconShown(true)
+                                    .withVersionShown(true)
+                                    .withLicenseShown(true)
+                                    .withLibraryModification("aboutlibraries", Libs.LibraryFields.LIBRARY_NAME, "_AboutLibraries")
+                                    .fragment();
+
+                            FragmentManager fragmentManager = getSupportFragmentManager();
+                            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                        }
+                        return false;
+                    }
+                })
+                .withSelectedItemByPosition(1)
+                .build();
+    }
+
+    public void ThemeNotSupported(){
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if(!prefs.getBoolean("firstTime", false)) {
+            Intent intent = new Intent(this, MyIntro.class);
+            startActivity(intent);
+            /*android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            kill fragment = new kill();
+            fragmentTransaction.replace(R.id.content_frame, fragment);
+            fragmentTransaction.commit();*/
+            // run your one time code
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("firstTime", true);
+            editor.commit();
+        }else {
+            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            Fragment_Swiper fragment = new Fragment_Swiper();
+            fragmentTransaction.replace(R.id.content_frame, fragment);
+            fragmentTransaction.commit();
+        }
+        // Handle Toolbar
+        result = new DrawerBuilder()
+                .withActivity(this)
+                .withToolbar(toolbar)
+                .withTranslucentStatusBar(true)
+                .withActionBarDrawerToggle(true)
+                .withHeader(R.layout.my_header)
+                .addDrawerItems(
+                        new PrimaryDrawerItem().withName(getString(R.string.icons_item_drawer)).withIcon(FontAwesome.Icon.faw_circle_o),
+                        new PrimaryDrawerItem().withName(getString(R.string.donate_item_drawer)).withIcon(FontAwesome.Icon.faw_dot_circle_o),
+                        new PrimaryDrawerItem().withName(getString(R.string.wallpapers_item_drawer)).withIcon(FontAwesome.Icon.faw_picture_o),
+                        new SectionDrawerItem().withName(getString(R.string.some_stuff_item_drawer)),
+                        new SecondaryDrawerItem().withName(getString(R.string.info_item_drawer)).withIcon(FontAwesome.Icon.faw_info),
+                        new SecondaryDrawerItem().withName("OpenStuff").withIcon(FontAwesome.Icon.faw_github)
+        )
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public boolean onItemClick(View view, int position, IDrawerItem iDrawerItem) {
+                        if (position == 1) {
+                            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             Fragment_Swiper fragment = new Fragment_Swiper();
                             fragmentTransaction.replace(R.id.content_frame, fragment);
                             fragmentTransaction.commit();
@@ -209,89 +406,24 @@ public class MainActivity extends ActionBarActivity {
                         } else if (position == 5) {
                             Intent intent = new Intent(getApplicationContext(), Activity_About.class);
                             startActivity(intent);
+                        } else if (position == 6) {
+                            LibsFragment fragment = new LibsBuilder()
+                                    .withLibraries()
+                                    .withAboutAppName(getString(R.string.app_name))
+                                    .withAboutDescription(getString(R.string.description_in_about_library))
+                                    .withAboutIconShown(true)
+                                    .withVersionShown(true)
+                                    .withLicenseShown(true)
+                                    .withLibraryModification("aboutlibraries", Libs.LibraryFields.LIBRARY_NAME, "_AboutLibraries")
+                                    .fragment();
+
+                            FragmentManager fragmentManager = getSupportFragmentManager();
+                            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                         }
+                        return false;
                     }
                 })
-                .withSelectedItem(0)
-                .build();
-    }
-
-    public void ThemeNotSupported(){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-        frameLayout = (FrameLayout) findViewById(R.id.content_frame);
-
-        final StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-                .permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        if(!prefs.getBoolean("firstTime", false)) {
-            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            Kill_notSupport fragment = new Kill_notSupport();
-            fragmentTransaction.replace(R.id.content_frame, fragment);
-            fragmentTransaction.commit();
-            // run your one time code
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putBoolean("firstTime", true);
-            editor.commit();
-        }else {
-            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            Fragment_Swiper fragment = new Fragment_Swiper();
-            fragmentTransaction.replace(R.id.content_frame, fragment);
-            fragmentTransaction.commit();
-        }
-
-        drawerMaterial = new Drawer()
-                .withActivity(this)
-                .withToolbar(toolbar)
-                .withActionBarDrawerToggle(true)
-                .withHeader(R.layout.my_header)
-                .addDrawerItems(
-                        new PrimaryDrawerItem().withName(getString(R.string.icons_item_drawer)).withIcon(FontAwesome.Icon.faw_circle_o),
-                        new PrimaryDrawerItem().withName(getString(R.string.donate_item_drawer)).withIcon(FontAwesome.Icon.faw_money),
-                        new PrimaryDrawerItem().withName(getString(R.string.wallpapers_item_drawer)).withIcon(FontAwesome.Icon.faw_picture_o).withBadge("◥"),
-                        new SectionDrawerItem().withName(getString(R.string.some_stuff_item_drawer)),
-                        new SecondaryDrawerItem().withName(getString(R.string.info_item_drawer)).withIcon(FontAwesome.Icon.faw_info)
-                )
-                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
-                        if (position == 0) {
-                            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-                            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                            Fragment_Swiper fragment = new Fragment_Swiper();
-                            fragmentTransaction.replace(R.id.content_frame, fragment);
-                            fragmentTransaction.commit();
-                        } else if (position == 1) {
-                            Intent intent = new Intent(getApplicationContext(), Donate.class);
-                            startActivity(intent);
-                        } else if (position == 2) {
-                            Intent i;
-                            PackageManager manager = getPackageManager();
-                            try {
-                                i = manager.getLaunchIntentForPackage("com.botty.wall");
-                                if (i == null)
-                                    throw new PackageManager.NameNotFoundException();
-                                i.addCategory(Intent.CATEGORY_LAUNCHER);
-                                startActivity(i);
-                            } catch (PackageManager.NameNotFoundException e) {
-                                Intent intent = new Intent(Intent.ACTION_VIEW);
-                                intent.setData(Uri.parse("market://details?id=com.botty.wall"));
-                                startActivity(intent);
-                            }
-                        } else if (position == 4) {
-                            Intent intent = new Intent(getApplicationContext(), Activity_About.class);
-                            startActivity(intent);
-                        }
-                    }
-                })
-                .withSelectedItem(0)
+                .withSelectedItemByPosition(1)
                 .build();
     }
 
@@ -424,7 +556,7 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             protected void onPostExecute(String msg) {
-                Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
 
             }
         }.execute(null, null, null);
@@ -455,5 +587,36 @@ public class MainActivity extends ActionBarActivity {
         editor.putString(PROPERTY_REG_ID, regId);
         editor.putInt(PROPERTY_APP_VERSION, appVersion);
         editor.commit();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_my_intro, menu);
+        return true;
+    }
+
+    /**
+     * Event Handling for Individual menu item selected
+     * Identify single menu item by it's id
+     * */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id = item.getItemId();
+        if(id == R.id.easter){
+            //Do whatever you want to do
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse("http://www.suicidesquad.com/"));
+            startActivity(i);
+            return true;
+        } else if (id == R.id.play){
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse("market://search?q=pub:Ivan Botty"));
+            startActivity(i);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/frame_theme"
+    android:background="@color/light_gray">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <com.flaviofaria.kenburnsview.KenBurnsView
+            android:id="@+id/img"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:src="@drawable/wallpaper1" />
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/shape"/>
+
+        <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/download_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:src="@drawable/ic_action_file_download"
+            android:layout_marginBottom="80dp"
+            fab:fab_colorNormal="#F13C90"
+            fab:fab_colorPressed="#f13c90"
+            fab:fab_colorRipple="#F13C90"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp" />
+
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView"
+            android:layout_gravity="center">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center">
+
+
+                <com.botty.ubuntufont.Bold
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Hi, I'm Botty.\nFor install Blue Next just click the ribbon below !\nI hope you will like it!"
+                    android:id="@+id/textView"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_margin="10dp"
+                    android:textColor="#e2ffffff" />
+
+                <com.botty.ubuntufont.Bold
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/info"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:textColor="#e2ffffff" />
+            </LinearLayout>
+        </ScrollView>
+
+    </FrameLayout>
+
+</FrameLayout>

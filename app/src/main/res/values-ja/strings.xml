@@ -7,6 +7,7 @@
     <string name="navigation_drawer_open">Wall</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+    <string name="snackbar_internet_req">Please connect to working Internet connection</string>
 
     <!-- About fragment -->
     <string name="theme_option">テーマオプション</string>
@@ -15,6 +16,11 @@
     <string name="summery_for_blue_next">のために KitKat</string>
     <string name="summery_blue_next_lollipop">のために Lollipop</string>
     <string name="summery_rev_dark_lollipop">のために Lollipop,設定アプリで同じthmeが暗いテーマにした</string>
+    <string name="in_app_summary">ようこそ画面を再度開きます</string>
+    <string name="in_app_tut">チュートリアル・アプリケーションで</string>
+    <string name="tut_category">個人指導</string>
+    <string name="video_tut">ビデオチュートリアル</string>
+    <string name="video_tut_summary">YouTubeのビデオチュートリアルを見ます</string>
     <string name="open_stuff_category">オープンスタッフ</string>
     <string name="installer_on_github">BlueNext Installer 上の GitHub</string>
     <string name="contact_category">私達/私やあなたのペット/家族/精神または何か他のものに連絡してください？</string>
@@ -54,4 +60,20 @@
     <!-- Activity Donate -->
     <string name="title_material_dialog_donate">Donate</string>
     <string name="choose_material_dialog_donate">choose</string>
+
+    <!-- FragmentLibrary -->
+    <string name="description_in_about_library">Download the theme!</string>
+
+    <!-- Activity MyIntro -->
+    <string name="my_intro_title_frag_one">私はジョークが大好き！</string>
+    <string name="my_intro_desc_frag_one">だから、私はこのアプリを使用する方法について説明しましょう。</string>
+    <string name="my_intro_title_frag_two">あなたは3のテーマを持っています (y)</string>
+    <string name="my_intro_desc_frag_two">アプリはデバイスでサポートされているテーマをダウンロードします。</string>
+    <string name="my_intro_title_frag_three">また、スタンドアロンのアイコンパックです。</string>
+    <string name="my_intro_desc_frag_three">あなたがテーマエンジンではない任意のROMを持っているのであれば、あなたは、アイコンを使用することができます。</string>
+    <string name="my_intro_title_frag_four">ETAのために聞かないでください！</string>
+    <string name="my_intro_desc_frag_four"><![CDATA["あなたが求めることがたくさん楽しむ場合、彼らは男の多くはあなたのようなボールを破るているそこask.fm訪問 <3 "]]></string>
+    <string name="my_intro_title_frag_five">母のない真剣に..</string>
+    <string name="my_intro_desc_frag_five">...お気に召してもらえると :D</string>
+
 </resources>

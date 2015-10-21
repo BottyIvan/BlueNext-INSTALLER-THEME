@@ -9,6 +9,7 @@
     <string name="drawer_close">Close</string>
     <string name="title_activity_about" translatable="false">About</string>
     <string name="title_activity_donate" translatable="false">Donate</string>
+    <string name="snackbar_internet_req">Please connect to working Internet connection</string>
 
     <!-- About fragment -->
     <string name="theme_option">Theme Option</string>
@@ -17,12 +18,17 @@
     <string name="summery_for_blue_next">For KitKat</string>
     <string name="summery_blue_next_lollipop">For Lollipop</string>
     <string name="summery_rev_dark_lollipop">For Lollipop,the same thme with setting app themed dark</string>
+    <string name="tut_category">Tutorial</string>
+    <string name="video_tut">Video tutorial</string>
+    <string name="video_tut_summary">Watch the video tutorial on YouTube</string>
+    <string name="in_app_tut">In-App tutorial</string>
+    <string name="in_app_summary">Restart welcome screen</string>
     <string name="open_stuff_category">OpenStuff</string>
     <string name="installer_on_github">BlueNext Installer on GitHub</string>
     <string name="contact_category">Contact us/me or your pets/family/spirit or anything else ?</string>
 
     <!-- Not translate Version info -->
-    <string name="info_for_installer" translatable="false">Version Installer: 2.0</string>
+    <string name="info_for_installer" translatable="false">Version Installer: 2.5.1-STAYSUICIDE</string>
     <string name="info_for_bleu_next" translatable="false">Version Blue Next: 0.6.4-senpai</string>
     <string name="info_for_blue_next_lollipop" translatable="false">Version Blue Next: 0.0.7+</string>
     <string name="info_rev_dark_lollipop" translatable="false">Version Blue Next rev_Dark: 0.0.7+</string>
@@ -68,5 +74,21 @@
     <!-- Activity Donate -->
     <string name="title_material_dialog_donate">Donate</string>
     <string name="choose_material_dialog_donate">choose</string>
+
+    <!-- FragmentLibrary -->
+    <string name="description_in_about_library">Download the theme!</string>
+
+    <!-- Activity MyIntro -->
+    <string name="title_activity_my_intro" translatable="false">MyIntro</string>
+    <string name="my_intro_title_frag_one">I love Jokes !</string>
+    <string name="my_intro_desc_frag_one">So let me explain how to use this app.</string>
+    <string name="my_intro_title_frag_two">You have 3 themes (y)</string>
+    <string name="my_intro_desc_frag_two">The App will download the theme supported by your device.</string>
+    <string name="my_intro_title_frag_three">It\'s also a stand alone icon pack.</string>
+    <string name="my_intro_desc_frag_three">So if you haven\'t any rom with theme engine, you can use the icons.</string>
+    <string name="my_intro_title_frag_four">Don\'t ask for ETA !</string>
+    <string name="my_intro_desc_frag_four"><![CDATA["If you enjoy a lot to ask, visit ask.fm them there are a lot of guys break balls like you <3 "]]></string>
+    <string name="my_intro_title_frag_five">Aha no seriously..</string>
+    <string name="my_intro_desc_frag_five">...I hope you like it :D</string>
 
 </resources>

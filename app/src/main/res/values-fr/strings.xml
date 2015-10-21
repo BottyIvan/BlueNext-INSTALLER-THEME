@@ -7,6 +7,7 @@
     <string name="navigation_drawer_open">Wall</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+    <string name="snackbar_internet_req">Please connect to working Internet connection</string>
 
     <!-- About fragment -->
     <string name="theme_option">Thème options</string>
@@ -15,6 +16,11 @@
     <string name="summery_for_blue_next">Pour KitKat</string>
     <string name="summery_blue_next_lollipop">Pour Lollipop</string>
     <string name="summery_rev_dark_lollipop">Pour Lollipop,le même thème avec des endroits sombres</string>
+    <string name="in_app_summary">rouvrir l\'écran d\'accueil</string>
+    <string name="in_app_tut">In-App tutoriel</string>
+    <string name="tut_category">Tutorial</string>
+    <string name="video_tut">Tutoriel vidéo</string>
+    <string name="video_tut_summary">Regardez le tutoriel vidéo sur YouTube</string>
     <string name="open_stuff_category">ChosesGratuit</string>
     <string name="installer_on_github">BlueNext Installer sur GitHub</string>
     <string name="contact_category">Compté nous/moi ou vos animaux de compagnie/famille/spiritueux ou de toute autre?</string>
@@ -54,4 +60,20 @@
     <!-- Activity Donate -->
     <string name="title_material_dialog_donate">Donate</string>
     <string name="choose_material_dialog_donate">choose</string>
+
+    <!-- FragmentLibrary -->
+    <string name="description_in_about_library">Download the theme!</string>
+
+    <!-- Activity MyIntro -->
+    <string name="my_intro_title_frag_one">I love blagues!</string>
+    <string name="my_intro_desc_frag_one">Alors permettez-moi de vous expliquer comment utiliser cette application.</string>
+    <string name="my_intro_title_frag_two">Vous avez 3 thèmes (y)</string>
+    <string name="my_intro_desc_frag_two">L\'application va télécharger le thème soutenu par votre appareil.</string>
+    <string name="my_intro_title_frag_three">Il est aussi une icône seul pack de support.</string>
+    <string name="my_intro_desc_frag_three">Donc, si vous avez pas de rom avec moteur de thème, vous pouvez utiliser les icônes.</string>
+    <string name="my_intro_title_frag_four">Ne pas demander de l\'ETA !</string>
+    <string name="my_intro_desc_frag_four"><![CDATA["Si vous aimez beaucoup demander, visitez ask.fm eux, il ya beaucoup de gars briser boules comme vous <3"]]></string>
+    <string name="my_intro_title_frag_five">Haha pas au sérieux ..</string>
+    <string name="my_intro_desc_frag_five">...J\'espère que tu aimes :D</string>
+
 </resources>

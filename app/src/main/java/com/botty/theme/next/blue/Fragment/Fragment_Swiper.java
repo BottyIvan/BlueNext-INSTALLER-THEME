@@ -7,8 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.PagerTabStrip;
-import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -70,7 +68,7 @@ public class Fragment_Swiper extends Fragment{
                 .getDisplayMetrics());
         mViewPager.setPageMargin(pageMargin);
         tabs.setViewPager(mViewPager);
-        tabs.setIndicatorColor(yellowColor);
+        tabs.setIndicatorColor(currentColor);
         tabs.setTextColor(currentColor);
         tabs.setIndicatorHeight(5);
 

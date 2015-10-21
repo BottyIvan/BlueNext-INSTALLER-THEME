@@ -3,16 +3,34 @@
 <PreferenceCategory
     android:title="@string/info_category">
     <PreferenceScreen
-        android:title="@string/info_for_installer"/>
+        android:title="@string/info_for_installer">
+        <intent android:action="android.intent.action.VIEW"
+            android:data="https://www.youtube.com/watch?v=PLLQK9la6Go"/>
+    </PreferenceScreen>
     <PreferenceScreen
         android:title="@string/info_for_bleu_next"
-        android:summary="@string/summery_for_blue_next"/>
+        android:summary="@string/summery_for_blue_next">
+        <intent android:action="android.intent.action.VIEW"
+            android:data="https://www.youtube.com/watch?v=JcWBEA8xs-Q"/>
+    </PreferenceScreen>
     <PreferenceScreen
         android:title="@string/info_for_blue_next_lollipop"
         android:summary="@string/summery_blue_next_lollipop"/>
     <PreferenceScreen
         android:title="@string/info_rev_dark_lollipop"
         android:summary="@string/summery_rev_dark_lollipop"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/tut_category">
+        <PreferenceScreen android:title="@string/video_tut"
+            android:summary="@string/video_tut_summary">
+            <intent android:action="android.intent.action.VIEW"
+                android:data="https://www.youtube.com/watch?v=cuk4j4wjPBM"/>
+        </PreferenceScreen>
+        <PreferenceScreen android:title="@string/in_app_tut"
+            android:summary="@string/in_app_summary">
+            <intent android:action="com.botty.theme.next.blue.Activities.MyIntro"
+                android:targetClass="com.botty.theme.next.blue.Activities.MyIntro"/>
+        </PreferenceScreen>
     </PreferenceCategory>
 <PreferenceCategory
         android:title="@string/open_stuff_category">

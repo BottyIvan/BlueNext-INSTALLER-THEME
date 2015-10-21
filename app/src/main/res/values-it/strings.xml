@@ -7,6 +7,7 @@
     <string name="navigation_drawer_open">Wall</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+    <string name="snackbar_internet_req">Please connect to working Internet connection</string>
 
     <!-- About fragment -->
     <string name="theme_option">Opzioni Tema</string>
@@ -15,6 +16,11 @@
     <string name="summery_for_blue_next">Per KitKat</string>
     <string name="summery_blue_next_lollipop">per Lollipop</string>
     <string name="summery_rev_dark_lollipop">Per Lollipop,lo stesso tema con le impostazioni temizzate scure</string>
+    <string name="in_app_summary">Riapri la schermata di benvenuto</string>
+    <string name="in_app_tut">In-App esercitazione</string>
+    <string name="tut_category">Tutorial</string>
+    <string name="video_tut">Video tutorial</string>
+    <string name="video_tut_summary">Guarda il video tutorial su YouTube</string>
     <string name="open_stuff_category">CoseLibere</string>
     <string name="installer_on_github">BlueNext Installer su GitHub</string>
     <string name="contact_category">Contata noi/me o i tuoi animali/familiari/spiriti o qualsiasi altro ?</string>
@@ -54,4 +60,20 @@
     <!-- Activity Donate -->
     <string name="title_material_dialog_donate">Donate</string>
     <string name="choose_material_dialog_donate">choose</string>
+
+    <!-- FragmentLibrary -->
+    <string name="description_in_about_library">Download the theme!</string>
+
+    <!-- Activity MyIntro -->
+    <string name="my_intro_title_frag_one">Amo Jokes!</string>
+    <string name="my_intro_desc_frag_one">Quindi lasciatemi spiegare come utilizzare questa applicazione.</string>
+    <string name="my_intro_title_frag_two">Hai 3 temi (y)</string>
+    <string name="my_intro_desc_frag_two">L\'App verrà scaricherà il tema supportato dal tuo dispositivo.</string>
+    <string name="my_intro_title_frag_three">E\' anche uno stand alone icon pack.</string>
+    <string name="my_intro_desc_frag_three">Quindi, se non hai una rom con il theme engine, è possibile utilizzare l\'icon pack.</string>
+    <string name="my_intro_title_frag_four">Non chiedere ETA !</string>
+    <string name="my_intro_desc_frag_four"><![CDATA["Se ti piace fare un sacco di domane, visita ask.fm qui ci sono un sacco di ragazzi che rompono le palle come te <3 "]]></string>
+    <string name="my_intro_title_frag_five">Haha no sul serio ..</string>
+    <string name="my_intro_desc_frag_five">...Spero che ti piaccia :D</string>
+
 </resources>

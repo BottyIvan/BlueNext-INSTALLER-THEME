@@ -40,7 +40,7 @@
             android:src="@drawable/ic_launcher" />
     </LinearLayout>
     
-    <TextView
+    <com.botty.ubuntufont.Bold
         android:id="@+id/tvAppName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
